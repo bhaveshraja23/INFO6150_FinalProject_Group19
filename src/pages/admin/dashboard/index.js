@@ -3,7 +3,9 @@ import React from "react";
 import "./styles.css";
 
 const Dashboard = () => {
-  return <div>Admin Dashboard</div>;
+  return (
+    <div>Admin Dashboard</div>
+  )
 };
 
 export default Dashboard;
