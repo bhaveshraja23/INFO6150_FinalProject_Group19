@@ -47,7 +47,7 @@ const LogIn = () => {
           </div>
           <div>
             <button className="btnlogin" type="submit">
-              <Link to="/dashboard">Log In</Link>
+              <Link to="/admin">Log In</Link>
             </button>
           </div>
           <div class="link">
