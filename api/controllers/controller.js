@@ -7,6 +7,9 @@ exports.createUser = async function (req, res) {
         fullName: req.body.fullName,
         email: req.body.email,
         password: req.body.password,
+        role: req.body.role,
+        created_at: Date.now(),
+        updated_at: Date.now(),
       });
       user
         .save()
@@ -36,10 +39,11 @@ exports.getAllUsers = async function (req, res) {
 
 exports.editUser = async function (req, res) {
     try {
-        const { email, password, fullName } = req.body;
+        const { email, password, fullName, role } = req.body;
+        const updated_at = new Date();
    
         // Validate input
-        if (!email || !password || !fullName) {
+        if (!email || !password || !fullName || !role) {
           return res.status(400).json({ message: "Missing required fields" });
         }
    
@@ -53,6 +57,8 @@ exports.editUser = async function (req, res) {
         // Update the user's password and full name
         user.password = password;
         user.fullName = fullName;
+        user.role = role;
+        user.updated_at = updated_at;
    
         // Save the user
         try {
