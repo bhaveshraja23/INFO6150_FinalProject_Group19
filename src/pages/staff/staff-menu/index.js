@@ -5,13 +5,12 @@ import Button from "react-bootstrap/Button";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AddMenu from "../../../components/popup-models/AddMenu";
 
-const Menu = () => {
+const StaffMenuPage = () => {
   return (
     <div class="flex-right">
       <div class="top-bar"></div>
       <div className="heading">
           <h3> Menu </h3>
-          <AddMenu />
       </div>
       <div class="menu-container">
       <div class="menu">
@@ -35,4 +34,4 @@ const Menu = () => {
   );
 };
 
-export default Menu;
+export default StaffMenuPage;
