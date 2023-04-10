@@ -30,6 +30,20 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: "required",
     },
+    role: {
+        type: String,
+        required: "required",
+    },
+    created_at:{
+        type: Date,
+        required: "required",
+        default: Date.now,
+    },
+    updated_at: {
+        type: Date,
+        required: "required",
+        default: Date.now,
+    }
 });
 
 const User = mongoose.model("User", UserSchema);

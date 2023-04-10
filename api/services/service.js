@@ -10,13 +10,13 @@ var valPassword = function (password) {
 
 var User = require("../models/model");
 //added fullname
-exports.createUser = async function (fullName, email, password) {
+exports.createUser = async function (fullName, email, password, role) {
     try {
         if (!valPassword(password)) {
             throw new Error("Invalid password");
         }
         const hashed = await bcrypt.hash(password, salt);
-        var user = await User.create({ fullName, email, password: hashed });
+        var user = await User.create({ fullName, email, password: hashed, role });
         return user;
     } catch (e) {
         throw e;
@@ -45,9 +45,9 @@ exports.existsUser = async function (email, password) {
     }
 };
 
-exports.editUser = async function(fullName, email, password){
+exports.editUser = async function(fullName, email, password, role){
     try{
-        await User.findOneAndUpdate({fullName, email, password});
+        await User.findOneAndUpdate({fullName, email, password, role});
     } catch(err){
         throw err;
     }
