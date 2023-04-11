@@ -20,10 +20,10 @@ function AddMenu() {
         <Modal.Body>
           <Form>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Email address</Form.Label>
+              <Form.Label>Name</Form.Label>
               <Form.Control
-                type="email"
-                placeholder="name@example.com"
+                type="text"
+                placeholder="ex: starters"
                 autoFocus
               />
             </Form.Group>
@@ -31,10 +31,10 @@ function AddMenu() {
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Close
+            Cancel
           </Button>
           <Button variant="primary" onClick={handleClose}>
-            Save Changes
+            Add
           </Button>
         </Modal.Footer>
       </Modal>

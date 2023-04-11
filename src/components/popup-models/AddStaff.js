@@ -20,6 +20,14 @@ function AddStaff() {
         <Modal.Body>
           <Form>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+            <Form.Label>Name</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="name"
+                autoFocus
+              />
+            </Form.Group>
+            <Form.Group className="mb-3">
               <Form.Label>Email address</Form.Label>
               <Form.Control
                 type="email"
@@ -41,10 +49,10 @@ function AddStaff() {
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Close
+            Cancel
           </Button>
           <Button variant="primary" onClick={handleClose}>
-            Save Changes
+            Create
           </Button>
         </Modal.Footer>
       </Modal>
