@@ -1,11 +1,11 @@
 var service = require("../services/service");
 var User = require("../models/model");
 var Menu = require("../models/model");
-var MenuItem = require("../models/model");
+/*var MenuItem = require("../models/model");
 var RestaurantTable = require("../models/model");
 var Order = require("../models/model");
 var OrderItem = require("../models/model");
-var Feedback = require("../models/model"); 
+var Feedback = require("../models/model"); */
 
 exports.createUser = async function (req, res) {
 
@@ -50,9 +50,9 @@ exports.createMenu = async function (req, res) {
         message: err.message,
       });
     });
-};
+}; 
 
-
+/* 
 exports.createMenuItem = async function (req, res) {
 
   const { name, description, price, menu_id} = req.body;
@@ -94,11 +94,11 @@ exports.createMenuItem = async function (req, res) {
     });
   })
 
-};
-
+}; */
+/* 
 exports.createTable = async function (req, res) {
 
-  const { name, defaultStaffId} = req.body;
+  const { name, status, defaultStaffId } = req.body;
 
   if(!defaultStaffId){
     return res.status(400).json({
@@ -115,6 +115,7 @@ exports.createTable = async function (req, res) {
 
     const restauranttables = new RestaurantTable({
       name: name,
+      status: status,
       created_at: Date.now(),
       updated_at: Date.now(),
       defaultStaffId: user._id,
@@ -135,9 +136,9 @@ exports.createTable = async function (req, res) {
     });
   })
 
-};
+}; */
 
-exports.createOrder = async function (req, res) {
+/* exports.createOrder = async function (req, res) {
 
   try{
     const { status, payment, people_count, type, customerId, staffId, tableId} = req.body;
@@ -167,9 +168,9 @@ exports.createOrder = async function (req, res) {
   catch(error){
     res.status(500).json({message: "Error"})
   }
-};
+}; */
 
-
+/* 
 exports.createOrderItem = async function (req, res) {
 
   try{
@@ -197,8 +198,8 @@ exports.createOrderItem = async function (req, res) {
   catch(error){
     res.status(500).json({message: "Error"})
   }
-};
-
+}; */
+/* 
 exports.createFeedbackUnderOrder = async function(req, res) {
   const { orderId } = req.params;
   const { content, rating } = req.body;
@@ -224,7 +225,7 @@ exports.createFeedbackUnderOrder = async function(req, res) {
   catch(error){
     res.status(400).json({message: "Error occured"});
   }
-};
+}; */
 
 
 exports.getAllUsers = async function (req, res) {
@@ -237,8 +238,27 @@ exports.getAllUsers = async function (req, res) {
       });
     });
 };
+//payload
+/*{
+  "status": 200,
+  "message": "All the users details have been fetched successfully",
+  "users": [
+      {
+          "_id": "64367762748926a8125e7855",
+          "fullName": "Pavithra K",
+          "email": "pavithra@gmail.com",
+          "password": "Pavithra@123",
+          "role": "Staff",
+          "created_at": "2023-04-12T09:18:26.013Z",
+          "updated_at": "2023-04-12T09:40:42.784Z",
+          "__v": 0
+      }
+  ]
+} */
 
-exports.getAllMenuItems = async function (req, res) {
+
+
+/* exports.getAllMenuItems = async function (req, res) {
   MenuItem.find()
   .select([])
   .then((documents) => {
@@ -247,7 +267,7 @@ exports.getAllMenuItems = async function (req, res) {
       menuitems: documents,
     });
   });
-};
+}; */
 
 exports.getAllMenu = async function (req, res) {
   Menu.find()
@@ -256,11 +276,11 @@ exports.getAllMenu = async function (req, res) {
     res.status(200).json({ status: 200,
        message: "Menu details have been fetched successfully",
        menus: documents, 
-      });
+      }); 
   });
 };
 
-exports.getAllTables = async function (req, res) {
+/* exports.getAllTables = async function (req, res) {
   RestaurantTable.find()
   .select([])
   .then((documents) => {
@@ -269,9 +289,9 @@ exports.getAllTables = async function (req, res) {
        restauranttables: documents, 
       });
   });
-};
+}; */
 
-exports.getAllOrders = async function (req, res) {
+/* exports.getAllOrders = async function (req, res) {
   Order.find()
   .select([])
   .then((documents) => {
@@ -280,9 +300,9 @@ exports.getAllOrders = async function (req, res) {
        orders: documents, 
       });
   });
-};
+}; */
 
-exports.getAllFeedback = async function (req, res) {
+/* exports.getAllFeedback = async function (req, res) {
   Feedback.find()
   .select([])
   .then((documents) => {
@@ -291,13 +311,13 @@ exports.getAllFeedback = async function (req, res) {
        feedbacks: documents, 
       });
   });
-};
+}; */
 
 exports.getMenuById = async function(req, res) {
   try {
-    const { id } = req.params;
+    const { menu_id } = req.params;
 
-    const menu = await Menu.findById(id);
+    const menu = await Menu.findById(menu_id);
 
     if (!menu) {
       return res.status(404).json({
@@ -306,13 +326,13 @@ exports.getMenuById = async function(req, res) {
       });
     }
 
-    const menuItems = await MenuItem.find({ menu_id : menu_id});
+    //const menuItems = await MenuItem.find({ menu_id : menu_id});
 
     res.status(200).json({
       status: 200,
       message: `Menu items fetched successfully`,
       menu: menu,
-      menuItems: menuItems
+      //menuItems: menuItems
     });
   } catch (error) {
     res.status(500).json({
@@ -321,7 +341,7 @@ exports.getMenuById = async function(req, res) {
       error: error.message
     });
   }
-};
+}; 
 
 exports.getAllMenuItemsByMenuId = async function(req, res) {
   try {
@@ -350,7 +370,7 @@ exports.getAllMenuItemsByMenuId = async function(req, res) {
   }
 };
 
-
+/* 
 exports.getAllOrderItemsByOrderId = async function(req, res) {
   try {
     const { order_id } = req.params;
@@ -376,9 +396,9 @@ exports.getAllOrderItemsByOrderId = async function(req, res) {
       error: error.message
     });
   }
-};
+}; */
 
-exports.getMenuItemById = async function(req, res) {
+/* exports.getMenuItemById = async function(req, res) {
   try {
     const { id } = req.params;
 
@@ -403,9 +423,9 @@ exports.getMenuItemById = async function(req, res) {
       error: error.message
     });
   }
-};
+}; */
 
-exports.getTableById = async function(req, res) {
+/* exports.getTableById = async function(req, res) {
   try {
 
     const restauranttables = await RestaurantTable.findById(req.params.id);
@@ -429,12 +449,15 @@ exports.getTableById = async function(req, res) {
       error: error.message
     });
   }
-};
+}; */
 
 exports.getUserById = async function(req, res) {
   try {
 
-    const user = await User.findById(req.params.id);
+    const {user_id} = req.params;
+
+    console.log(user_id);
+    const user = await User.findById(user_id);
 
     if (!user) {
       return res.status(404).json({
@@ -455,9 +478,9 @@ exports.getUserById = async function(req, res) {
       error: error.message
     });
   }
-};
+};  
 
-exports.getFeedbackUnderOrder = async function(req, res){
+/* exports.getFeedbackUnderOrder = async function(req, res){
   
 
   const {id} = req.params;
@@ -475,11 +498,11 @@ exports.getFeedbackUnderOrder = async function(req, res){
   catch(error){
     res.status(500).json({message: "Cant get"});
   }
-};
+}; */
 
 exports.editUser = async function (req, res) {
     try {
-        const { id } = req.params;
+        const { user_id } = req.params;
         const { email, password, fullName, role } = req.body;
         const updated_at = new Date();
    
@@ -489,7 +512,7 @@ exports.editUser = async function (req, res) {
         }
    
         // Find the user by email
-        const user = await User.findById({ id });
+        const user = await User.findById(user_id);
    
         if (!user) {
           return res.status(404).json({status: 400, message: "User not found" });
@@ -520,7 +543,7 @@ exports.editUser = async function (req, res) {
 exports.editMenu = async function (req, res) {
   try {
 
-      const {id} = req.params;
+      const {menu_id} = req.params;
       const { name, description } = req.body;
       const updated_at = new Date();
  
@@ -530,7 +553,7 @@ exports.editMenu = async function (req, res) {
       }
  
       // Find the menu by id
-      const menu = await Menu.findById({ id });
+      const menu = await Menu.findById(menu_id);
  
       if (!menu) {
         return res.status(404).json({status: 400, message: "Menu not found" });
@@ -553,9 +576,9 @@ exports.editMenu = async function (req, res) {
       res.status(500).json({ status: 400, message: "Error processing request" });
     }
 
-};
+}; 
 
-exports.editOrder = async function (req, res) {
+/* exports.editOrder = async function (req, res) {
   try {
 
       const {id} = req.params;
@@ -592,10 +615,10 @@ exports.editOrder = async function (req, res) {
       console.error(error);
       res.status(500).json({ status: 400, message: "Error processing request" });
     }
-};
+}; */
 
 
-exports.editOrderItem = async function (req, res) {
+/* exports.editOrderItem = async function (req, res) {
   try {
 
       const {id} = req.params;
@@ -630,9 +653,9 @@ exports.editOrderItem = async function (req, res) {
       console.error(error);
       res.status(500).json({ status: 400, message: "Error processing request" });
     }
-};
+}; */
 
-exports.editMenuItem = async function (req, res) {
+/* exports.editMenuItem = async function (req, res) {
   try {
 
       const {id} = req.params;
@@ -669,18 +692,18 @@ exports.editMenuItem = async function (req, res) {
       res.status(500).json({ status: 400, message: "Error processing request" });
     }
 
-};
+}; */
 
-exports.editTable = async function (req, res) {
+/* exports.editTable = async function (req, res) {
 
   try {
 
       const {id} = req.params;
-      const { name } = req.body;
+      const { name, status } = req.body;
       const updated_at = new Date();
  
       // Validate input
-      if (!name) {
+      if (!name || !status) {
         return res.status(400).json({ message: "Missing required fields" });
       }
  
@@ -692,6 +715,7 @@ exports.editTable = async function (req, res) {
       }
  
       restauranttables.name = name;
+      restauranttables.status = status;
       restauranttables.updated_at = updated_at;
  
       // Save the user
@@ -707,35 +731,40 @@ exports.editTable = async function (req, res) {
       res.status(500).json({ status: 400, message: "Error processing request" });
     }
 
-};
+}; */
 
 exports.deleteUser = async function (req, res) {
     try{
-    if (!req.params.id) {
-        return res.status(400).json({ status:400, message: "Please provide an email" });
+
+    const {user_id} = req.params;
+    if (!user_id) {
+        return res.status(400).json({ status:400, message: "Please provide a valid id" });
       }
-      const user = await User.findOne({ id: req.params.id });
+      const user = await User.findById(user_id);
       if (!user) {
         return res.status(404).json({ status:400, message: "User not found" });
       }
-      await User.deleteOne({ id: req.params.id });
+      await User.deleteOne({_id: user_id});
       return res.status(200).json({ status:200, message: "User has been deleted successfully" });
     } catch (error) {
       console.error(error);
       return res.status(500).json({ status:400, message: "Error deleting user" });
     }
-};
+}; 
+
 
 exports.deleteMenu = async function (req, res) {
   try{
-  if (!req.params.id) {
+
+  const {menu_id} = req.params;  
+  if (!menu_id) {
       return res.status(400).json({ status:400, message: "Please provide menu id" });
     }
-    const menu = await Menu.findOne({ id: req.params.id });
+    const menu = await Menu.findById(menu_id);
     if (!menu) {
       return res.status(404).json({ status:400, message: "Menu not found" });
     }
-    await Menu.deleteOne({ id: req.params.id });
+    await Menu.deleteOne({ _id: menu_id});
     return res.status(200).json({ status:200, message: "Menu has been deleted successfully" });
   } catch (error) {
     console.error(error);
@@ -743,7 +772,7 @@ exports.deleteMenu = async function (req, res) {
   }
 };
 
-exports.deleteMenuItem = async function (req, res) {
+/* exports.deleteMenuItem = async function (req, res) {
   try{
   if (!req.params.id) {
       return res.status(400).json({ status:400, message: "Please provide menu item id" });
@@ -758,10 +787,10 @@ exports.deleteMenuItem = async function (req, res) {
     console.error(error);
     return res.status(500).json({ status:400, message: "Error deleting menu item" });
   }
-};
+}; */
 
 
-exports.deleteTable = async function (req, res) {
+/* exports.deleteTable = async function (req, res) {
   try{
   if (!req.params.id) {
       return res.status(400).json({ status:400, message: "Please provide table id" });
@@ -776,9 +805,9 @@ exports.deleteTable = async function (req, res) {
     console.error(error);
     return res.status(500).json({ status:400, message: "Error deleting table" });
   }
-};
+}; */
 
-exports.deleteOrderItem = async function (req, res) {
+/* exports.deleteOrderItem = async function (req, res) {
   try{
   if (!req.params.id) {
       return res.status(400).json({ status:400, message: "Please provide order item id" });
@@ -793,7 +822,7 @@ exports.deleteOrderItem = async function (req, res) {
     console.error(error);
     return res.status(500).json({ status:400, message: "Error deleting order item" });
   }
-};
+}; */
 
 exports.loginUser = async function (req, res) {
     var {email, password} = req.body;

@@ -66,9 +66,9 @@ const MenuSchema = new mongoose.Schema({
         default: Date.now,
     }
 
-})
+});
 
-const MenuItemSchema = new mongoose.Schema({
+/*const MenuItemSchema = new mongoose.Schema({
 
     name: {
         type: String,
@@ -107,6 +107,11 @@ const RestaurantTableSchema = new mongoose.Schema({
         required: "required",
 
     },
+    status:{
+        type: String,
+        required: true,
+        enum: ["OCCUPIED", "EMPTY"],
+    },
     created_at:{
         type: Date,
         required: "required",
@@ -128,12 +133,12 @@ const OrderSchema = new mongoose.Schema({
     status:{
         type: String,
         required: true,
-        enum: ["Booked", "Initiated", "InProgress", "Cancelled", "Success"],
+        enum: ["BOOKED", "INITIATED", "INPROGRESS", "CANCELLED", "SUCCESS"],
     },
     payment:{
         type: String,
         required: true,
-        enum: ["True", "False"],
+        enum: ["TRUE", "FALSE"],
     },
     people_count:{
         type: String,
@@ -142,7 +147,7 @@ const OrderSchema = new mongoose.Schema({
     type:{
         type: String,
         required: true,
-        enum: ["TakeAway", "DineIn"],
+        enum: ["TAKEAWAY", "DINEIN"],
     },
     created_at:{
         type: Date,
@@ -226,20 +231,20 @@ const FeedbackSchema = new mongoose.Schema({
         ref: 'Order',
         required: true,
     },
-})
+}) */
 
 const User = mongoose.model("User", UserSchema);
 const Menu = mongoose.model("Menu", MenuSchema);
-const MenuItem = mongoose.model("MenuItem", MenuItemSchema);
+/* const MenuItem = mongoose.model("MenuItem", MenuItemSchema);
 const RestaurantTable = mongoose.model("RestaurantTable", RestaurantTableSchema);
 const Order = mongoose.model("Order", OrderSchema);
 const OrderItem = mongoose.model("OrderItem", OrderItemSchema);
-const Feedback = mongoose.model("Feedback", FeedbackSchema);
+const Feedback = mongoose.model("Feedback", FeedbackSchema); */
 
 module.exports = User;
 module.exports = Menu;
-module.exports = MenuItem;
+/*module.exports = MenuItem;
 module.exports = RestaurantTable;
 module.exports = Order;
 module.exports = OrderItem;
-module.exports = Feedback;
+module.exports = Feedback; */
