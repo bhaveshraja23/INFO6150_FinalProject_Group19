@@ -16,24 +16,24 @@ module.exports = function (app) {
     //Dashboard
     //router.post("/api/admin/dashboard",controller.createDashboard);
     //Menu
-    router.get("api/admin/menu", controller.getAllMenu);
-    router.get("api/admin/menu/:menu_id", controller.getMenuById);
+    router.get("/api/admin/menu", controller.getAllMenu);
+    router.get("/api/admin/menu/:menu_id", controller.getMenuById);
     router.post("/api/admin/menu", controller.createMenu);
     router.put("/api/admin/menu/:menu_id", controller.editMenu);
     router.delete("/api/admin/menu/:menu_id", controller.deleteMenu);
     router.get("/api/admin/menu/:menu_id/menu-item", controller.getAllMenuItemsByMenuId);
     //MenuItems
-    router.get("/api/admin/menu-item", controller.getAllMenuItems);
+   /*  router.get("/api/admin/menu-item", controller.getAllMenuItems);
     router.get("/api/admin/menu-item/:menu_item_id", controller.getMenuItemById);
     router.post("/api/admin/menu-item", controller.createMenuItem);
     router.put("/api/admin/menu-item/:menu_item_id",controller.editMenuItem);
-    router.delete("/api/admin/menu-item/:menu_item_id", controller.deleteMenuItem);
+    router.delete("/api/admin/menu-item/:menu_item_id", controller.deleteMenuItem); */
     //Table
-    router.get("/api/admin/table", controller.getAllTables);
+    /* router.get("/api/admin/table", controller.getAllTables);
     router.get("/api/admin/table/:table_id",controller.getTableById);
     router.post("/api/admin/table", controller.createTable);
     router.put("/api/admin/:table_id", controller.editTable);
-    router.delete("/api/admin/:table_id", controller.deleteTable);
+    router.delete("/api/admin/:table_id", controller.deleteTable); */
     //User
     router.get("/api/admin/user", controller.getAllUsers);
     router.get("/api/admin/user/:user_id", controller.getUserById);
@@ -41,15 +41,15 @@ module.exports = function (app) {
     router.put("/api/admin/user/:user_id", controller.editUser);
     router.delete("/api/admin/user/:user_id", controller.deleteUser);
     //Order
-    router.get("/api/admin/orders", controller.getAllOrders);
+    /* router.get("/api/admin/orders", controller.getAllOrders);
     router.put("/api/admin/order/:order_id", controller.editOrder);
     //OrderFeedback
-    router.get("/api/admin/feedback", controller.getAllFeedback);
+    router.get("/api/admin/feedback", controller.getAllFeedback); */
 
 
     //Staff
     //Tables
-    router.get("/api/staff/table", controller.getAllTables);
+    /* router.get("/api/staff/table", controller.getAllTables);
     //Menu
     router.get("/api/staff/menu", controller.getAllMenu);
     router.get("/api/staff/menu/:menu_id/menu-item", controller.getAllMenuItemsByMenuId);
@@ -66,7 +66,7 @@ module.exports = function (app) {
     router.get("/api/staff/order/:order_id/order-item", controller.getAllOrderItemsByOrderId);
     //OrderFeedback
     router.post("/api/staff/:order_id/feedback", controller.createFeedbackUnderOrder);
-    router.get("/api/staff/:order_id/feedback", controller.getFeedbackUnderOrder);
+    router.get("/api/staff/:order_id/feedback", controller.getFeedbackUnderOrder); */
    
     app.use('/', router);
 };
