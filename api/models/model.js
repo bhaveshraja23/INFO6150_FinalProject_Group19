@@ -68,7 +68,7 @@ const MenuSchema = new mongoose.Schema({
 
 });
 
-/*const MenuItemSchema = new mongoose.Schema({
+const MenuItemSchema = new mongoose.Schema({
 
     name: {
         type: String,
@@ -210,11 +210,11 @@ const OrderItemSchema = new mongoose.Schema({
 const FeedbackSchema = new mongoose.Schema({
     content:{
         type: String,
-        required: "required",
+        required: false,
     },
     rating:{
         type: String,
-        required: true,
+        required: false,
     },
     created_at:{
         type: Date,
@@ -229,22 +229,22 @@ const FeedbackSchema = new mongoose.Schema({
     orderId:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Order',
-        required: true,
+        required: false,
     },
-}) */
+})
 
-const User = mongoose.model("User", UserSchema);
+//const User = mongoose.model("User", UserSchema);
 const Menu = mongoose.model("Menu", MenuSchema);
-/* const MenuItem = mongoose.model("MenuItem", MenuItemSchema);
+const MenuItem = mongoose.model("MenuItem", MenuItemSchema);
 const RestaurantTable = mongoose.model("RestaurantTable", RestaurantTableSchema);
 const Order = mongoose.model("Order", OrderSchema);
 const OrderItem = mongoose.model("OrderItem", OrderItemSchema);
-const Feedback = mongoose.model("Feedback", FeedbackSchema); */
+const Feedback = mongoose.model("Feedback", FeedbackSchema);
 
-module.exports = User;
+//module.exports = User;
 module.exports = Menu;
-/*module.exports = MenuItem;
+module.exports = MenuItem;
 module.exports = RestaurantTable;
 module.exports = Order;
 module.exports = OrderItem;
-module.exports = Feedback; */
+module.exports = Feedback;
