@@ -1,0 +1,35 @@
+.flex-right {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    border: 1px solid black;
+
+    .top-bar {
+        height: 60px;
+        border: 1px solid #eeeeee;
+    }
+
+    .staff-container {
+        display: flex;
+        flex-direction: column;
+        margin-left: 55px;
+        padding: 0;
+
+        .staff {
+            border: 1px solid #e2e2e2;
+            width: 75%;
+            margin-top: 20px;
+            padding: 20px;
+            height: 8vh;
+
+            h4 { 
+                color: #0030A9;
+            }
+
+            p {
+                color: #888888;
+            }
+        }
+    }
+}
