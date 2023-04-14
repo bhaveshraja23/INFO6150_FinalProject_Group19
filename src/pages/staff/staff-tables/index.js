@@ -5,13 +5,13 @@ import Button from "react-bootstrap/Button";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AddTable from "../../../components/popup-models/AddTable";
 
-const Tables = () => {
+
+const StaffTablesPage = () => {
   return (
     <div class="flex-right">
       <div class="top-bar"></div>
       <div className="heading">
         <h3> Tables </h3>
-        <AddTable />
       </div>
       <div class="table-container">
         <div class="table">
@@ -35,4 +35,4 @@ const Tables = () => {
   );
 };
 
-export default Tables;
+export default StaffTablesPage;

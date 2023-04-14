@@ -1,8 +1,11 @@
 import React from "react";
 // router
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+// axios configuration
+import "./config/axios";
 // layouts
 import AdminLayout from "./layouts/admin-layout";
+import StaffLayout from "./layouts/staff-layout";
 // pages
 // non auth
 import LoginPage from "./pages/log-in";
@@ -13,6 +16,9 @@ import MenuPage from "./pages/admin/menu";
 import TablesPage from "./pages/admin/tables";
 import StaffPage from "./pages/admin/staff";
 // staff
+import StaffTablesPage from "./pages/staff/staff-menu";
+import StaffMenuPage from "./pages/staff/staff-tables";
+//import CustomerFeedbackPage from "./pages/staff/staff-feedback";
 
 function App() {
   return (
@@ -26,6 +32,11 @@ function App() {
           <Route path="menu" element={<MenuPage />} />
           <Route path="tables" element={<TablesPage />} />
           <Route path="staff" element={<StaffPage />} />
+        </Route>
+        <Route path="/staff" element={<StaffLayout />}>
+          <Route index element={<StaffTablesPage />} />
+          <Route path="staff-menu" element={<StaffMenuPage />} />
+          {/* <Route path="staff-feedback" element={<CustomerFeedbackPage />} /> */}
         </Route>
       </Routes>
     </Router>
