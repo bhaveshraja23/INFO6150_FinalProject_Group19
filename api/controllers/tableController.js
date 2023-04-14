@@ -132,19 +132,31 @@ exports.editTable = async function (req, res) {
 };
 
 exports.deleteTable = async function (req, res) {
-    try{
-    if (!req.params.id) {
-        return res.status(400).json({ status:400, message: "Please provide table id" });
-      }
-      const restauranttables = await RestaurantTable.findOne({ id: req.params.id });
-      if (!restauranttables) {
-        return res.status(404).json({ status:400, message: "Table not found" });
-      }
-      await RestaurantTable.deleteOne({ id: req.params.id });
-      return res.status(200).json({ status:200, message: "Table has been deleted successfully" });
-    } catch (error) {
-      console.error(error);
-      return res.status(500).json({ status:400, message: "Error deleting table" });
-    }
-};
+try {
+    const { table_id } = req.params;
 
+    console.log("Table_id: ", table_id);
+
+    if (!table_id) {
+    return res.status(400).json({ status: 400, message: "Please provide table id" });
+    }
+
+    const isValidObjectId = mongoose.isValidObjectId(table_id);
+
+    if (!isValidObjectId) {
+    return res.status(400).json({ message: "Invalid table ID" });
+    }
+
+    const restauranttables = await RestaurantTable.findById({ _id: table_id });
+
+    if (!restauranttables) {
+    return res.status(404).json({ status: 400, message: "Table not found" });
+    }
+
+    await RestaurantTable.deleteOne({ _id: table_id });
+    return res.status(200).json({ status: 200, message: "Table has been deleted successfully" });
+} catch (error) {
+    console.error(error);
+    return res.status(500).json({ status: 400, message: "Error deleting table" });
+}
+};

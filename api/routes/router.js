@@ -35,8 +35,8 @@ module.exports = function (app) {
     router.get("/api/admin/table", controllerTables.getAllTables);
     router.get("/api/admin/table/:table_id",controllerTables.getTableById);
     router.post("/api/admin/table", controllerTables.createTable);
-    router.put("/api/admin/:table_id", controllerTables.editTable);
-    router.delete("/api/admin/:table_id", controllerTables.deleteTable);
+    router.put("/api/admin/table/:table_id", controllerTables.editTable);
+    router.delete("/api/admin/table/:table_id", controllerTables.deleteTable);
 
     //User
     router.get("/api/admin/user", controller.getAllUsers);
@@ -46,34 +46,36 @@ module.exports = function (app) {
     router.delete("/api/admin/user/:user_id", controller.deleteUser);
 
     //Order
-    /* router.get("/api/admin/orders", controller.getAllOrders);
-    router.put("/api/admin/order/:order_id", controller.editOrder);
+    router.get("/api/admin/orders", controllerOrders.getAllOrders);
+    router.put("/api/admin/order/:order_id", controllerOrders.editOrder);
 
-    //OrderFeedback
-    router.get("/api/admin/feedback", controller.getAllFeedback); */
+    // //OrderFeedback
+    // router.get("/api/admin/feedback", controller.getAllFeedback);
 
 
    // <------------------------STAFF------------------------------->
 
     //Tables
-    /* router.get("/api/staff/table", controller.getAllTables);
+    router.get("/api/staff/table", controllerTables.getAllTables);
     //Menu
-    router.get("/api/staff/menu", controller.getAllMenu);
-    router.get("/api/staff/menu/:menu_id/menu-item", controller.getAllMenuItemsByMenuId);
+    router.get("/api/staff/menu", controllerMenuItems.getAllMenu);
+    router.get("/api/staff/menu/:menu_id/menu-item", controllerMenuItems.getAllMenuItemsByMenuId);
 
 
-    //Order
-    router.get("/api/staff/orders", controller.getAllOrders);
-    router.post("/api/staff/order", controller.createOrder);
-    router.put("/api/staff/order/:order_id", controller.editOrder);
+    // Order
+    router.get("/api/staff/orders", controllerOrders.getAllOrders);
+    router.post("/api/staff/order", controllerOrders.createOrder);
+    router.put("/api/staff/order/:order_id", controllerOrders.editOrder);
+
     //OrderItems
-    router.post("/api/staff/order-item", controller.createOrderItem);
-    router.put("/api/staff/order-item/:order_id", controller.editOrderItem);
-    router.delete("/api/staff/order-item/:order_item_id", controller.deleteOrderItem);
-    router.get("/api/staff/order/:order_id/order-item", controller.getAllOrderItemsByOrderId);
-    //OrderFeedback
-    router.post("/api/staff/:order_id/feedback", controller.createFeedbackUnderOrder);
-    router.get("/api/staff/:order_id/feedback", controller.getFeedbackUnderOrder); */
+    router.post("/api/staff/order-item", controllerOrders.createOrderItem);
+    router.put("/api/staff/order-item/:order_id", controllerOrders.editOrderItem);
+    router.delete("/api/staff/order-item/:order_item_id", controllerOrders.deleteOrderItem);
+    router.get("/api/staff/order/:order_id/order-item", controllerOrders.getAllOrderItemsByOrderId);
+    
+    // //OrderFeedback
+    // router.post("/api/staff/:order_id/feedback", controller.createFeedbackUnderOrder);
+    // router.get("/api/staff/:order_id/feedback", controller.getFeedbackUnderOrder); 
    
     app.use('/', router);
 };
