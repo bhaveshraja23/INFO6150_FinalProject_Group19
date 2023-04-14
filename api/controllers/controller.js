@@ -1,6 +1,6 @@
 var service = require("../services/service");
-var User = require("../models/model");
-var Menu = require("../models/model");
+var User = require("../models/userModel");
+var Menu = require("../models/menuModel");
 /*var MenuItem = require("../models/model");
 var RestaurantTable = require("../models/model");
 var Order = require("../models/model");
@@ -257,7 +257,6 @@ exports.getAllUsers = async function (req, res) {
 } */
 
 
-
 /* exports.getAllMenuItems = async function (req, res) {
   MenuItem.find()
   .select([])
@@ -343,32 +342,32 @@ exports.getMenuById = async function(req, res) {
   }
 }; 
 
-exports.getAllMenuItemsByMenuId = async function(req, res) {
-  try {
-    const { menu_id } = req.params;
+// exports.getAllMenuItemsByMenuId = async function(req, res) {
+//   try {
+//     const { menu_id } = req.params;
 
-    const menuitems = await MenuItem.findById(menu_id);
+//     const menuitems = await MenuItem.findById(menu_id);
 
-    if (!menuitems) {
-      return res.status(404).json({
-        status: 404,
-        message: `Menu item not found`
-      });
-    }
+//     if (!menuitems) {
+//       return res.status(404).json({
+//         status: 404,
+//         message: `Menu item not found`
+//       });
+//     }
 
-    res.status(200).json({
-      status: 200,
-      message: `Menu item fetched successfully`,
-      menuitems: menuitems
-    });
-  } catch (error) {
-    res.status(500).json({
-      status: 500,
-      message: `Error occurred`,
-      error: error.message
-    });
-  }
-};
+//     res.status(200).json({
+//       status: 200,
+//       message: `Menu item fetched successfully`,
+//       menuitems: menuitems
+//     });
+//   } catch (error) {
+//     res.status(500).json({
+//       status: 500,
+//       message: `Error occurred`,
+//       error: error.message
+//     });
+//   }
+// };
 
 /* 
 exports.getAllOrderItemsByOrderId = async function(req, res) {

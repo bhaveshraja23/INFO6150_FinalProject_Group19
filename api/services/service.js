@@ -8,8 +8,8 @@ var valPassword = function (password) {
     return regexPassword.test(password);
 };
 
-var User = require("../models/model");
-var Menu = require("../models/model");
+var User = require("../models/userModel");
+var Menu = require("../models/menuModel");
 /*var MenuItem = require("../models/model");
 var RestaurantTable = require("../models/model");
 var Order = require("../models/model");
@@ -197,18 +197,18 @@ exports.getMenuById = async function (menu_id) {
     }
 };
 
-exports.getAllMenuItemsByMenuId = async function (menu_id) {
-    try {
+// exports.getAllMenuItemsByMenuId = async function (menu_id) {
+//     try {
 
-        const menuitems = await MenuItem.find({menu_id: menu_id});
-        if(!menuitems){
-            throw new Error('Not found');
-        }
-        return menuitems;
-    } catch(err){
-        throw e;
-    }
-};
+//         const menuitems = await MenuItem.find({menu_id: menu_id});
+//         if(!menuitems){
+//             throw new Error('Not found');
+//         }
+//         return menuitems;
+//     } catch(err){
+//         throw e;
+//     }
+// };
 
 /*exports.getAllTables = async function () {
     try {
