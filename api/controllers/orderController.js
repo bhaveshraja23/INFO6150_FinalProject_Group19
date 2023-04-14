@@ -1,14 +1,24 @@
 var Order = require("../models/orderModel");
+var User = require("../models/userModel");
+var RestaurantTable = require("../models/restaurantTableModel")
 var OrderItem = require("../models/orderItemsModel");
 
 exports.createOrder = async function (req, res) {
 
     try{
       const { status, payment, people_count, type, customerId, staffId, tableId} = req.body;
-  
+      
+      console.log("customerId: ", req.body.customerId)
+      console.log("StaffId: ", req.body.staffId)
+      console.log("TableId: ", req.body.tableId)
+
       const customer = await User.findById(customerId);
       const staff = await User.findById(staffId);
       const restTable = await RestaurantTable.findById(tableId);
+
+      console.log("customer: ", customer)
+      console.log("staff: ", staff)
+      console.log("table: ", restTable)
   
       if(!customer || !staff || !restTable){
         return res.status(404).json({message: "Not found"});
@@ -20,7 +30,9 @@ exports.createOrder = async function (req, res) {
         type: type,
         created_at: Date.now(),
         updated_at: Date.now(),
-        customerId, staffId, tableId,
+        customerId: customerId,
+        staffId: staffId, 
+        tableId: tableId
       });
   
       await orders.save();
