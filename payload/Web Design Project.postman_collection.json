@@ -1,0 +1,521 @@
+{
+	"info": {
+		"_postman_id": "2744e57a-745b-496f-802f-063c1bf12ac7",
+		"name": "Web Design Project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23608744"
+	},
+	"item": [
+		{
+			"name": "All users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/admin/user/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"admin",
+						"user",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fullName\": \"Saketh Vootla\",\n    \"email\": \"test1@gmail.com\",\n    \"password\": \"Test123\",\n    \"role\": \"admin\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/admin/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"admin",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All Menu's",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/admin/menu/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"admin",
+						"menu",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Menu",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"Dessert\",\n    \"description\":\"Ice Cream\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/admin/menu/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"admin",
+						"menu",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Menu ",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"Entre\",\n    \"description\":\"Chicken Wings\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/admin/menu/64376d6a9567533e783ed2bc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"admin",
+						"menu",
+						"64376d6a9567533e783ed2bc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Menu",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/admin/menu/643770969567533e783ed2c1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"admin",
+						"menu",
+						"643770969567533e783ed2c1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Menu Item",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"Salad\",\n    \"description\":\"Who eats this?\",\n    \"price\":\"$3.99\",\n    \"menu_id\":\"643680c6c6af658e6d153a6a\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/admin/menu-item",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"admin",
+						"menu-item"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Menu Items",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/admin/menu-item",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"admin",
+						"menu-item"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get One Menu Item by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/admin/menu-item/?643782106b6471b2b61e6e1c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"admin",
+						"menu-item",
+						""
+					],
+					"query": [
+						{
+							"key": "643782106b6471b2b61e6e1c",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Menu Item by ID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/admin/menu-item/?643782106b6471b2b61e6e1c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"admin",
+						"menu-item",
+						""
+					],
+					"query": [
+						{
+							"key": "643782106b6471b2b61e6e1c",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Menu Item",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/admin/menu-item/?643782be6b6471b2b61e6e20",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"admin",
+						"menu-item",
+						""
+					],
+					"query": [
+						{
+							"key": "643782be6b6471b2b61e6e20",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Table",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"Vishal\",\n    \"status\":\"EMPTY\",\n    \"defaultStaffId\": \"64367762748926a8125e7855\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/admin/table",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"admin",
+						"table"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Tables",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/admin/table",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"admin",
+						"table"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Table by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/admin/table/64379bfec16faf701b7831cf",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"admin",
+						"table",
+						"64379bfec16faf701b7831cf"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Table by ID",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/admin/table/64379bfec16faf701b7831cf",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"admin",
+						"table",
+						"64379bfec16faf701b7831cf"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Table by ID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/admin/table/?64379c26c16faf701b7831d2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"admin",
+						"table",
+						""
+					],
+					"query": [
+						{
+							"key": "64379c26c16faf701b7831d2",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Menu(Staff)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/staff/menu",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"staff",
+						"menu"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Tables (Staff)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/staff/table",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"staff",
+						"table"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Menu Items by ID (Staff)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/staff/menu/643783ee6b6471b2b61e6e26/menu-item",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"staff",
+						"menu",
+						"643783ee6b6471b2b61e6e26",
+						"menu-item"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Orders(Staff)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/staff/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"staff",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
