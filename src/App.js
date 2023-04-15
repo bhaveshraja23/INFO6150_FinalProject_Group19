@@ -1,11 +1,8 @@
 import React from "react";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import ReactDOM from 'react-dom';
-import Button from "react-bootstrap/Button";
-
-
 // router
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+// axios configuration
+import "./config/axios";
 // layouts
 import AdminLayout from "./layouts/admin-layout";
 import StaffLayout from "./layouts/staff-layout";

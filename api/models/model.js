@@ -66,7 +66,7 @@ const MenuSchema = new mongoose.Schema({
         default: Date.now,
     }
 
-})
+});
 
 const MenuItemSchema = new mongoose.Schema({
 
@@ -107,6 +107,11 @@ const RestaurantTableSchema = new mongoose.Schema({
         required: "required",
 
     },
+    status:{
+        type: String,
+        required: true,
+        enum: ["OCCUPIED", "EMPTY"],
+    },
     created_at:{
         type: Date,
         required: "required",
@@ -128,12 +133,12 @@ const OrderSchema = new mongoose.Schema({
     status:{
         type: String,
         required: true,
-        enum: ["Booked", "Initiated", "InProgress", "Cancelled", "Success"],
+        enum: ["BOOKED", "INITIATED", "INPROGRESS", "CANCELLED", "SUCCESS"],
     },
     payment:{
         type: String,
         required: true,
-        enum: ["True", "False"],
+        enum: ["TRUE", "FALSE"],
     },
     people_count:{
         type: String,
@@ -142,7 +147,7 @@ const OrderSchema = new mongoose.Schema({
     type:{
         type: String,
         required: true,
-        enum: ["TakeAway", "DineIn"],
+        enum: ["TAKEAWAY", "DINEIN"],
     },
     created_at:{
         type: Date,
@@ -205,11 +210,11 @@ const OrderItemSchema = new mongoose.Schema({
 const FeedbackSchema = new mongoose.Schema({
     content:{
         type: String,
-        required: "required",
+        required: false,
     },
     rating:{
         type: String,
-        required: true,
+        required: false,
     },
     created_at:{
         type: Date,
@@ -224,11 +229,11 @@ const FeedbackSchema = new mongoose.Schema({
     orderId:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Order',
-        required: true,
+        required: false,
     },
 })
 
-const User = mongoose.model("User", UserSchema);
+//const User = mongoose.model("User", UserSchema);
 const Menu = mongoose.model("Menu", MenuSchema);
 const MenuItem = mongoose.model("MenuItem", MenuItemSchema);
 const RestaurantTable = mongoose.model("RestaurantTable", RestaurantTableSchema);
@@ -236,7 +241,7 @@ const Order = mongoose.model("Order", OrderSchema);
 const OrderItem = mongoose.model("OrderItem", OrderItemSchema);
 const Feedback = mongoose.model("Feedback", FeedbackSchema);
 
-module.exports = User;
+//module.exports = User;
 module.exports = Menu;
 module.exports = MenuItem;
 module.exports = RestaurantTable;

@@ -3,15 +3,12 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 // styles
 import "./styles.scss";
-import { MaterialSymbol } from 'react-material-symbols';
-import 'react-material-symbols/dist/rounded.css';
-import 'react-material-symbols/dist/outlined.css';
 import images from "../../constants/images";
 import { Link } from "react-router-dom";
 
 const AdminLayout = () => {
   return (
-      <div class="flex-container">
+  <div class="flex-container">
         <div class="flex-left">
             <div class="logo">
             <img src={images.dineordel} alt="food img" />
