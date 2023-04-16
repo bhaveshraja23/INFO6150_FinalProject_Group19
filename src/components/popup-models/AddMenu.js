@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import Modal from 'react-bootstrap/Modal';
+import React, { useState } from "react";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Modal from "react-bootstrap/Modal";
 
 function AddMenu() {
   const [show, setShow] = useState(false);
@@ -11,8 +11,10 @@ function AddMenu() {
 
   return (
     <>
-    <button onClick={handleShow} type="button" class="btn btn-primary">Add Menu</button>
-       
+      <button onClick={handleShow} type="button" className="btn btn-primary">
+        Add Menu
+      </button>
+
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Add Menu</Modal.Title>
@@ -21,11 +23,7 @@ function AddMenu() {
           <Form>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Name</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="ex: starters"
-                autoFocus
-              />
+              <Form.Control type="text" placeholder="ex: starters" autoFocus />
             </Form.Group>
           </Form>
         </Modal.Body>

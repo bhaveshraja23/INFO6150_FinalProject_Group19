@@ -1,11 +1,12 @@
 const e = require("express");
-const bcrypt = require('bcrypt');
+const bcrypt = require("bcrypt");
 const salt = 8;
 
 //password validation is given here instead of the schema
 var valPassword = function (password) {
-    var regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,30}$/;
-    return regexPassword.test(password);
+  var regexPassword =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,30}$/;
+  return regexPassword.test(password);
 };
 
 var User = require("../models/userModel");
@@ -19,25 +20,24 @@ var Feedback = require("../models/model"); */
 //User
 //added fullname
 exports.createUser = async function (fullName, email, password, role) {
-    try {
-        if (!valPassword(password)) {
-            throw new Error("Invalid password");
-        }
-        const user = await User.create({ fullName, email, password, role});
-        return user;
-    } catch (e) {
-        throw e;
+  try {
+    if (!valPassword(password)) {
+      throw new Error("Invalid password");
     }
+    const user = await User.create({ fullName, email, password, role });
+    return user;
+  } catch (e) {
+    throw e;
+  }
 };
 
 exports.createMenu = async function (name, description) {
-    try {
-
-        const menu = await Menu.create({ name, description});
-        return menu;
-    } catch (e) {
-        throw e;
-    }
+  try {
+    const menu = await Menu.create({ name, description });
+    return menu;
+  } catch (e) {
+    throw e;
+  }
 };
 
 /*exports.createMenuItem = async function (name, description, price, menu_id) {
@@ -158,12 +158,12 @@ exports.createFeedbackUnderOrder = async function (content, rating, orderId) {
 };
  */
 exports.getAllUsers = async function () {
-    try {
-        var user = User.find();
-        return user;
-    } catch(err){
-        throw e;
-    }
+  try {
+    var user = User.find();
+    return user;
+  } catch (err) {
+    throw e;
+  }
 };
 
 /* exports.getAllMenuItems = async function () {
@@ -176,25 +176,24 @@ exports.getAllUsers = async function () {
 }; */
 
 exports.getAllMenu = async function () {
-    try {
-        var menu = Menu.find();
-        return menu;
-    } catch(err){
-        throw e;
-    }
+  try {
+    var menu = Menu.find();
+    return menu;
+  } catch (err) {
+    throw e;
+  }
 };
 
 exports.getMenuById = async function (menu_id) {
-    try {
-
-        const menu = await Menu.findById(menu_id);
-        if(!menu){
-            throw new Error('Not found');
-        }
-        return menu;
-    } catch(err){
-        throw e;
+  try {
+    const menu = await Menu.findById(menu_id);
+    if (!menu) {
+      throw new Error("Not found");
     }
+    return menu;
+  } catch (err) {
+    throw e;
+  }
 };
 
 // exports.getAllMenuItemsByMenuId = async function (menu_id) {
@@ -281,16 +280,15 @@ exports.getTableById = async function (tableId) {
 }; */
 
 exports.getUserById = async function (userid) {
-    try {
-
-        const user = await User.findById(userid);
-        if(!user){
-            throw new Error('Not found');
-        }
-        return user;
-    } catch(err){
-        throw e;
+  try {
+    const user = await User.findById(userid);
+    if (!user) {
+      throw new Error("Not found");
     }
+    return user;
+  } catch (err) {
+    throw e;
+  }
 };
 
 /* exports.getFeedbackUnderOrder = async function (order_id) {
@@ -307,60 +305,56 @@ exports.getUserById = async function (userid) {
 }; */
 
 exports.existsUser = async function (email, password) {
-    try {
-        var user = await User.findOne({ email: email });
-        if (user && await bcrypt.compare(password, user.password)) {
-            return user;
-        } else {
-            return null;
-        }
-    } catch (e) {
-        throw e;
+  try {
+    var user = await User.findOne({ email: email });
+    if (user && (await bcrypt.compare(password, user.password))) {
+      return user;
+    } else {
+      return null;
     }
+  } catch (e) {
+    throw e;
+  }
 };
 
-exports.editUser = async function(fullName, email, password, role, userid){
-    try{
-
-        const user = await User.findById(userid);
-        if(!user){
-            throw new Error('User not found');
-        }
-
-        user.fullName = fullName;
-        user.email = email;
-        user.password = password;
-        user.role = role;
-        user.updated_at = new Date();
-
-        const userr = await user.save();
-
-        return userr;
-
-    } catch(err){
-        throw err;
+exports.editUser = async function (fullName, email, password, role, userid) {
+  try {
+    const user = await User.findById(userid);
+    if (!user) {
+      throw new Error("User not found");
     }
+
+    user.fullName = fullName;
+    user.email = email;
+    user.password = password;
+    user.role = role;
+    user.updated_at = new Date();
+
+    const userr = await user.save();
+
+    return userr;
+  } catch (err) {
+    throw err;
+  }
 };
 
-exports.editMenu = async function(name, description, menu_id){
-    try{
-
-        const menu = await Menu.findById(menu_id);
-        if(!menu){
-            throw new Error('User not found');
-        }
-
-        menu.name = name;
-        menu.description = description;
-        menu.updated_at = new Date();
-
-        const menuu = await menu.save();
-
-        return menuu;
-
-    } catch(err){
-        throw err;
+exports.editMenu = async function (name, description, menu_id) {
+  try {
+    const menu = await Menu.findById(menu_id);
+    if (!menu) {
+      throw new Error("User not found");
     }
+
+    menu.name = name;
+    menu.description = description;
+    menu.updated_at = new Date();
+
+    const menuu = await menu.save();
+
+    return menuu;
+  } catch (err) {
+    throw err;
+  }
 };
 
 /* exports.editOrder = async function(status, payment, people_count, type, order_id){
@@ -450,20 +444,20 @@ exports.editTable = async function(name, status, table_id){
     }
 }; */
 
-exports.deleteUser = async function(id){
-    try{
-        await User.deleteOne({_id: id});
-    } catch(err){
-        throw err;
-    }
+exports.deleteUser = async function (id) {
+  try {
+    await User.deleteOne({ _id: id });
+  } catch (err) {
+    throw err;
+  }
 };
 
-exports.deleteMenu = async function(id){
-    try{
-        await Menu.deleteOne({_id: id});
-    } catch(err){
-        throw err;
-    }
+exports.deleteMenu = async function (id) {
+  try {
+    await Menu.deleteOne({ _id: id });
+  } catch (err) {
+    throw err;
+  }
 };
 
 /*exports.deleteMenuItem = async function(id){

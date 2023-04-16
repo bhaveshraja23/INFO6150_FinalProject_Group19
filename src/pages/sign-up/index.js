@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import "./styles.css";
 import images from "../../constants/images";
 
-
 const SignUp = () => {
   return (
     <div className="section-container">
@@ -53,13 +52,13 @@ const SignUp = () => {
               placeholder="create password"
             />
           </div>
-          
+
           <div>
             <button className="btnlogin" type="submit">
               Sign Up
             </button>
           </div>
-          <div class="link">
+          <div className="link">
             <p>
               Already have an account?
               <Link to="/">LogIn</Link>

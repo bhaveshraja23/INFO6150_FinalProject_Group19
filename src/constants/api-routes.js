@@ -1,6 +1,7 @@
-export const BASE_URL = `http://localhost:8000`;
+export const BASE_URL = `http://localhost:3000`;
 
 // authentication endpoints
+export const SIGN_IN_ENDPOINT = `/api/sign-in`;
 
 // booking an order
 export const CUSTOMER_TABLE_BOOK_ENDPOINT = `/admin/dashboard`;
