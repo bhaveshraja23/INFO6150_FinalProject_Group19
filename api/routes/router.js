@@ -5,6 +5,7 @@ const controller = require("../controllers/controller");
 const controllerMenuItems = require("../controllers/menuController")
 const controllerOrders = require("../controllers/orderController")
 const controllerTables = require("../controllers/tableController")
+const controllerFeedback = require("../controllers/feedbackController");
 
 module.exports = function (app) {
     //Sign-in
@@ -50,7 +51,7 @@ module.exports = function (app) {
     router.put("/api/admin/order/:order_id", controllerOrders.editOrder);
 
     // //OrderFeedback
-    // router.get("/api/admin/feedback", controller.getAllFeedback);
+    router.get("/api/admin/feedback", controllerFeedback.getAllFeedback);
 
 
    // <------------------------STAFF------------------------------->
@@ -74,8 +75,8 @@ module.exports = function (app) {
     router.get("/api/staff/order/:order_id/order-item", controllerOrders.getAllOrderItemsByOrderId);
     
     // //OrderFeedback
-    // router.post("/api/staff/:order_id/feedback", controller.createFeedbackUnderOrder);
-    // router.get("/api/staff/:order_id/feedback", controller.getFeedbackUnderOrder); 
+    router.post("/api/staff/:order_id/feedback", controllerFeedback.createFeedbackUnderOrder);
+    router.get("/api/staff/:order_id/feedback", controllerFeedback.getFeedbackUnderOrder); 
    
     app.use('/', router);
 };
