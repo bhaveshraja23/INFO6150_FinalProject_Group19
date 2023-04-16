@@ -2,6 +2,7 @@ var Order = require("../models/orderModel");
 var User = require("../models/userModel");
 var RestaurantTable = require("../models/restaurantTableModel")
 var OrderItem = require("../models/orderItemsModel");
+var MenuItem = require("../models/menuItemsModel");
 
 exports.createOrder = async function (req, res) {
 
@@ -61,7 +62,8 @@ try{
     updated_at: Date.now(),
     quantity: quantity,
     price: price,
-    itemId, order,
+    itemId: itemId,
+    orderId: orderId,
     });
 
     await orderitems.save();
@@ -89,7 +91,7 @@ exports.getAllOrderItemsByOrderId = async function(req, res) {
 try {
     const { order_id } = req.params;
 
-    const orderitems = await OrderItem.findById(order_id);
+    const orderitems = await OrderItem.find({ orderId: order_id});
 
     if (!orderitems) {
     return res.status(404).json({
@@ -115,7 +117,7 @@ try {
 exports.editOrder = async function (req, res) {
 try {
 
-    const {id} = req.params;
+    const {order_id} = req.params;
     const { status, payment, people_count, type } = req.body;
     const updated_at = new Date();
 
@@ -125,7 +127,7 @@ try {
     }
 
     // Find the menu by id
-    const orders = await Order.findById({ id });
+    const orders = await Order.findById(order_id);
 
     if (!orders) {
         return res.status(404).json({status: 400, message: "Order not found" });
@@ -137,7 +139,7 @@ try {
     orders.type = type;
     orders.updated_at = updated_at;
 
-    // Save the user
+    // Save the order
     try {
         await orders.save();
         res.status(200).json({ status:200, message: "Order has been updated successfully" });
@@ -154,7 +156,7 @@ try {
 exports.editOrderItem = async function (req, res) {
 try {
 
-    const {id} = req.params;
+    const {order_item_id} = req.params;
     const { quantity, price } = req.body;
     const updated_at = new Date();
 
@@ -164,7 +166,7 @@ try {
     }
 
     // Find the menu by id
-    const orderitems = await OrderItem.findById({ id });
+    const orderitems = await OrderItem.findById(order_item_id);
 
     if (!orderitems) {
         return res.status(404).json({status: 400, message: "Order item not found" });
@@ -190,14 +192,16 @@ try {
 
 exports.deleteOrderItem = async function (req, res) {
     try{
-    if (!req.params.id) {
+    
+    const {order_item_id} = req.params;
+    if (!order_item_id) {
         return res.status(400).json({ status:400, message: "Please provide order item id" });
       }
-      const orderitems = await OrderItem.findOne({ id: req.params.id });
+      const orderitems = await OrderItem.findById(order_item_id);
       if (!orderitems) {
         return res.status(404).json({ status:400, message: "Order item not found" });
       }
-      await OrderItem.deleteOne({ id: req.params.id });
+      await OrderItem.deleteOne({ _id: order_item_id });
       return res.status(200).json({ status:200, message: "Order item has been deleted successfully" });
     } catch (error) {
       console.error(error);
