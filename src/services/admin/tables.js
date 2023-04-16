@@ -6,9 +6,9 @@ import {
 } from "../../constants/api-routes";
 
 export const tableService = {
-  getAll: async (data) => {
+  getAll: async () => {
     try {
-      const response = await axios.get(ADMIN_TABLES_ENDPOINT, data);
+      const response = await axios.get(ADMIN_TABLES_ENDPOINT);
       return response.data;
     } catch (error) {
       throw error.response.data;

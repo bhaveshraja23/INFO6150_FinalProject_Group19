@@ -15,14 +15,14 @@ export const ADMIN_DASHBOARD_ENDPOINT = `/admin/dashboard`;
 // menu items
 
 // staff
-export const ADMIN_STAFF_ENDPOINT = `/admin/staff`;
+export const ADMIN_STAFF_ENDPOINT = `/api/admin/user`;
 export const ADMIN_STAFF_WITH_ID_ENDPOINT = (staff_id) =>
-  `/admin/staff/${staff_id}`;
+  `/api/admin/user/${staff_id}`;
 
 // tables
-export const ADMIN_TABLES_ENDPOINT = `/admin/tables`;
+export const ADMIN_TABLES_ENDPOINT = `/api/admin/table`;
 export const ADMIN_TABLES_WITH_ID_ENDPOINT = (table_id) =>
-  `/admin/tables/${table_id}`;
+  `/api/admin/table/${table_id}`;
 
 // admin endpoints ends
 

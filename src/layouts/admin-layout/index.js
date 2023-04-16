@@ -43,9 +43,7 @@ const AdminLayout = () => {
               <Link to="/admin/settings" className="link">Settings</Link>
             </div> */}
       </div>
-      <div>
-        <Outlet />
-      </div>
+      <Outlet />
     </div>
   );
 };
