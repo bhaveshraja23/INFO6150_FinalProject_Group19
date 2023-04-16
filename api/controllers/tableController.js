@@ -82,7 +82,7 @@ exports.getTableById = async function (req, res) {
 exports.editTable = async function (req, res) {
   try {
     const { table_id } = req.params;
-    const { name, status } = req.body;
+    const { name, status, defaultStaffId } = req.body;
     const updated_at = new Date();
 
     const isValidObjectId = mongoose.isValidObjectId(table_id);
@@ -106,14 +106,17 @@ exports.editTable = async function (req, res) {
 
     restauranttables.name = name;
     restauranttables.status = status;
+    restauranttables.defaultStaffId = defaultStaffId;
     restauranttables.updated_at = updated_at;
 
     // Save the user
     try {
-      await restauranttables.save();
-      res
-        .status(200)
-        .json({ status: 200, message: "Table has been updated successfully" });
+      let tableData = await restauranttables.save();
+      res.status(200).json({
+        status: 200,
+        data: tableData,
+        message: "Table has been updated successfully",
+      });
     } catch (saveError) {
       console.error(saveError);
       res.status(500).json({ status: 400, message: "Error updating table" });
