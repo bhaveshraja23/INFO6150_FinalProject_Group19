@@ -69,7 +69,7 @@ module.exports = function (app) {
 
     //OrderItems
     router.post("/api/staff/order-item", controllerOrders.createOrderItem);
-    router.put("/api/staff/order-item/:order_id", controllerOrders.editOrderItem);
+    router.put("/api/staff/order-item/:order_item_id", controllerOrders.editOrderItem);
     router.delete("/api/staff/order-item/:order_item_id", controllerOrders.deleteOrderItem);
     router.get("/api/staff/order/:order_id/order-item", controllerOrders.getAllOrderItemsByOrderId);
     
