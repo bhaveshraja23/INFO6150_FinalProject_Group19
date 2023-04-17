@@ -11,6 +11,7 @@ const AdminLayout = () => {
     <div className="flex-container">
       <div className="flex-left">
         <div className="logo">
+          <div className="resolve"></div>
           <img src={images.dineordel} alt="food img" />
         </div>
         <br /> <br /> <br />
@@ -43,9 +44,7 @@ const AdminLayout = () => {
               <Link to="/admin/settings" className="link">Settings</Link>
             </div> */}
       </div>
-      <div>
-        <Outlet />
-      </div>
+      <Outlet />
     </div>
   );
 };

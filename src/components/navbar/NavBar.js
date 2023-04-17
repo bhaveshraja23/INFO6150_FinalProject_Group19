@@ -7,9 +7,9 @@ import images from "../../constants/images";
 const NavBar = () => {
   const [showNavbar, setShowNavbar] = useState(false);
 
-  const handleShowNavbar = () => {
-    setShowNavbar(!showNavbar);
-  };
+  // const handleShowNavbar = () => {
+  //   setShowNavbar(!showNavbar);
+  // };
   return (
     <nav className="navbar">
       <div className="container">

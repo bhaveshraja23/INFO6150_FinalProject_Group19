@@ -6,9 +6,9 @@ import {
 } from "../../constants/api-routes";
 
 export const staffService = {
-  getAll: async (data) => {
+  getAll: async () => {
     try {
-      const response = await axios.get(ADMIN_STAFF_ENDPOINT, data);
+      const response = await axios.get(ADMIN_STAFF_ENDPOINT);
       return response.data;
     } catch (error) {
       throw error.response.data;

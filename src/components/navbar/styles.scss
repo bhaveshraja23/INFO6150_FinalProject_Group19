@@ -4,34 +4,41 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Inter', sans-serif;
-  background-color: $primary-color;
+  background-color: #fff;
 }
 
 .container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 15px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  margin-left: 30px !important;
+  margin-right: 30px !important;
+  padding: 0;
   height: 100%;
 }
 
 .navbar {
-  // position: fixed !important;
-  // top: 0;
+  position: fixed;
+  top: 60;
   // overflow: hidden;
   height: 60px;
   width: 100vw;
-  background-color: $primary-color;
-
-
+  background-color: #fff;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
 }
 
 .logo {
+
+  width: 120px;
+  height: 40px;
+
+  img {
+    height: 40px;
+  }
+
 }
 
 .nav-elements {
+
+  margin-left: 60px !important;
+  color: #000;
 
 }
 
@@ -39,10 +46,12 @@ body {
   display: flex;
   justify-content: space-between;
   list-style-type: none;
+  margin: 2px;
+  margin-left: 60px;
 }
 
 .nav-elements ul li:not(:last-child) {
-  margin-right: 60px;
+  margin-right: 40px;
 }
 
 .nav-elements ul a {
@@ -53,7 +62,7 @@ body {
 }
 
 .nav-elements ul a.active {
-  color: #574c4c;
+  color: $primary-color;
   font-weight: 500;
   position: relative;
 }
@@ -61,11 +70,11 @@ body {
 .nav-elements ul a.active::after {
   content: '';
   position: absolute;
-  bottom: -4px;
+  bottom: -6px;
   left: 0;
   width: 100%;
   height: 2px;
-  background-color: #E8522A;
+  background-color: $primary-color;
 }
 
 
@@ -79,7 +88,7 @@ body {
     position: absolute;
     right: 0;
     top: 60px;
-    background-color: #fef7e5;
+    background-color: #fff;
     width: 0px;
     height: calc(100vh - 60px);
     transition: all 0.3s ease-in;
