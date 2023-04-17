@@ -1,0 +1,25 @@
+$primary-color: #0030a9;
+$primary-dark: #000e71;
+$primary-light: #8cbcf5;
+$danger-red: #ff2323;
+$white: #ffffff;
+$grey-border: #e2e2e2;
+$grey-desc: #888888;
+$grey-secondary-border: #eeeeee;
+$font: "Inter", sans-serif;
+
+.custom-modal {
+  .custom-modal-header {
+    font-size: 20px;
+    font-weight: 500;
+  }
+  .custom-modal-body {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .custom-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+}

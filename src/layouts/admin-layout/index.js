@@ -8,54 +8,43 @@ import { Link } from "react-router-dom";
 
 const AdminLayout = () => {
   return (
-    <div class="flex-container">
-      <div class="flex-left">
-        <div class="logo">
+    <div className="flex-container">
+      <div className="flex-left">
+        <div className="logo">
+          <div className="resolve"></div>
           <img src={images.dineordel} alt="food img" />
         </div>
         <br /> <br /> <br />
-        <div class="nav-item">
-          <span class="material-symbols-outlined">home</span>
-          {/* <MaterialSymbol icon="Home" size={22} color="#8CBCF5" /> */}
+        <div className="nav-item">
+          <span className="material-symbols-outlined">home</span>
           <Link to="/admin" className="link" color="$primary-light">
             Home
           </Link>
         </div>
-        <div class="nav-item">
-          <span class="material-symbols-outlined">restaurant_menu</span>
-          {/* <MaterialSymbol
-            icon="Restaurant_menu"
-            size={22}
-            fill
-            grade={-25}
-            color="#8CBCF5"
-          /> */}
+        <div className="nav-item">
+          <span className="material-symbols-outlined">restaurant_menu</span>
           <Link to="/admin/menu" className="link">
             Menu
           </Link>
         </div>
-        <div class="nav-item">
-          <span class="material-symbols-outlined">table_bar</span>
-          {/* <MaterialSymbol icon="Table_bar" size={22} color="#8CBCF5" /> */}
+        <div className="nav-item">
+          <span className="material-symbols-outlined">table_bar</span>
           <Link to="/admin/tables" className="link">
             Tables
           </Link>
         </div>
-        <div class="nav-item">
-          <span class="material-symbols-outlined">group</span>
-          {/* <MaterialSymbol icon="Group" size={22} color="#8CBCF5" /> */}
+        <div className="nav-item">
+          <span className="material-symbols-outlined">group</span>
           <Link to="/admin/staff" className="link">
             Staff
           </Link>
         </div>
-        {/* <div class="nav-item">
+        {/* <div className="nav-item">
               <MaterialSymbol icon="Settings" size={20} /> 
               <Link to="/admin/settings" className="link">Settings</Link>
             </div> */}
       </div>
-      <div>
-        <Outlet />
-      </div>
+      <Outlet />
     </div>
   );
 };

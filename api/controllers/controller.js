@@ -1,34 +1,33 @@
 var service = require("../services/service");
-var User = require("../models/model");
-var Menu = require("../models/model");
-var MenuItem = require("../models/model");
+var User = require("../models/userModel");
+var Menu = require("../models/menuModel");
+/*var MenuItem = require("../models/model");
 var RestaurantTable = require("../models/model");
 var Order = require("../models/model");
 var OrderItem = require("../models/model");
-var Feedback = require("../models/model"); 
+var Feedback = require("../models/model"); */
 
 exports.createUser = async function (req, res) {
-
-    const user = new User({
-        fullName: req.body.fullName,
-        email: req.body.email,
-        password: req.body.password,
-        role: req.body.role,
-        created_at: Date.now(),
-        updated_at: Date.now(),
+  const user = new User({
+    fullName: req.body.fullName,
+    email: req.body.email,
+    password: req.body.password,
+    role: req.body.role,
+    created_at: Date.now(),
+    updated_at: Date.now(),
+  });
+  user
+    .save()
+    .then(() => {
+      res.status(201).json({
+        status: 201,
+        data: user,
+        message: "New user has been added successfully",
       });
-      user
-        .save()
-        .then(() => {
-          res.status(201).json({ status:201, data: user,
-            message: "New user has been added successfully",
-          });
-        })
-        .catch((err) => {
-          res.status(500).json({ status:400,
-            message: err.message,
-          });
-        });
+    })
+    .catch((err) => {
+      res.status(500).json({ status: 400, message: err.message });
+    });
 };
 
 exports.createMenu = async function (req, res) {
@@ -41,18 +40,18 @@ exports.createMenu = async function (req, res) {
   menu
     .save()
     .then(() => {
-      res.status(201).json({ status:201, data: menu,
+      res.status(201).json({
+        status: 201,
+        data: menu,
         message: "New menu has been added successfully",
       });
     })
     .catch((err) => {
-      res.status(500).json({ status:400,
-        message: err.message,
-      });
+      res.status(500).json({ status: 400, message: err.message });
     });
 };
 
-
+/* 
 exports.createMenuItem = async function (req, res) {
 
   const { name, description, price, menu_id} = req.body;
@@ -94,11 +93,11 @@ exports.createMenuItem = async function (req, res) {
     });
   })
 
-};
-
+}; */
+/* 
 exports.createTable = async function (req, res) {
 
-  const { name, defaultStaffId} = req.body;
+  const { name, status, defaultStaffId } = req.body;
 
   if(!defaultStaffId){
     return res.status(400).json({
@@ -115,6 +114,7 @@ exports.createTable = async function (req, res) {
 
     const restauranttables = new RestaurantTable({
       name: name,
+      status: status,
       created_at: Date.now(),
       updated_at: Date.now(),
       defaultStaffId: user._id,
@@ -135,9 +135,9 @@ exports.createTable = async function (req, res) {
     });
   })
 
-};
+}; */
 
-exports.createOrder = async function (req, res) {
+/* exports.createOrder = async function (req, res) {
 
   try{
     const { status, payment, people_count, type, customerId, staffId, tableId} = req.body;
@@ -167,9 +167,9 @@ exports.createOrder = async function (req, res) {
   catch(error){
     res.status(500).json({message: "Error"})
   }
-};
+}; */
 
-
+/* 
 exports.createOrderItem = async function (req, res) {
 
   try{
@@ -197,8 +197,8 @@ exports.createOrderItem = async function (req, res) {
   catch(error){
     res.status(500).json({message: "Error"})
   }
-};
-
+}; */
+/* 
 exports.createFeedbackUnderOrder = async function(req, res) {
   const { orderId } = req.params;
   const { content, rating } = req.body;
@@ -224,21 +224,38 @@ exports.createFeedbackUnderOrder = async function(req, res) {
   catch(error){
     res.status(400).json({message: "Error occured"});
   }
-};
-
+}; */
 
 exports.getAllUsers = async function (req, res) {
-    User.find()
+  User.find()
     .select([])
     .then((documents) => {
-      res.status(200).json({ status: 200,
+      res.status(200).json({
+        status: 200,
         message: "All the users details have been fetched successfully",
         users: documents,
       });
     });
 };
+//payload
+/*{
+  "status": 200,
+  "message": "All the users details have been fetched successfully",
+  "users": [
+      {
+          "_id": "64367762748926a8125e7855",
+          "fullName": "Pavithra K",
+          "email": "pavithra@gmail.com",
+          "password": "Pavithra@123",
+          "role": "Staff",
+          "created_at": "2023-04-12T09:18:26.013Z",
+          "updated_at": "2023-04-12T09:40:42.784Z",
+          "__v": 0
+      }
+  ]
+} */
 
-exports.getAllMenuItems = async function (req, res) {
+/* exports.getAllMenuItems = async function (req, res) {
   MenuItem.find()
   .select([])
   .then((documents) => {
@@ -247,20 +264,21 @@ exports.getAllMenuItems = async function (req, res) {
       menuitems: documents,
     });
   });
-};
+}; */
 
 exports.getAllMenu = async function (req, res) {
   Menu.find()
-  .select([])
-  .then((documents) => {
-    res.status(200).json({ status: 200,
-       message: "Menu details have been fetched successfully",
-       menus: documents, 
+    .select([])
+    .then((documents) => {
+      res.status(200).json({
+        status: 200,
+        message: "Menu details have been fetched successfully",
+        menus: documents,
       });
-  });
+    });
 };
 
-exports.getAllTables = async function (req, res) {
+/* exports.getAllTables = async function (req, res) {
   RestaurantTable.find()
   .select([])
   .then((documents) => {
@@ -269,9 +287,9 @@ exports.getAllTables = async function (req, res) {
        restauranttables: documents, 
       });
   });
-};
+}; */
 
-exports.getAllOrders = async function (req, res) {
+/* exports.getAllOrders = async function (req, res) {
   Order.find()
   .select([])
   .then((documents) => {
@@ -280,9 +298,9 @@ exports.getAllOrders = async function (req, res) {
        orders: documents, 
       });
   });
-};
+}; */
 
-exports.getAllFeedback = async function (req, res) {
+/* exports.getAllFeedback = async function (req, res) {
   Feedback.find()
   .select([])
   .then((documents) => {
@@ -291,66 +309,66 @@ exports.getAllFeedback = async function (req, res) {
        feedbacks: documents, 
       });
   });
-};
+}; */
 
-exports.getMenuById = async function(req, res) {
+exports.getMenuById = async function (req, res) {
   try {
-    const { id } = req.params;
+    const { menu_id } = req.params;
 
-    const menu = await Menu.findById(id);
+    const menu = await Menu.findById(menu_id);
 
     if (!menu) {
       return res.status(404).json({
         status: 404,
-        message: `Menu item not found`
+        message: `Menu item not found`,
       });
     }
 
-    const menuItems = await MenuItem.find({ menu_id : menu_id});
+    //const menuItems = await MenuItem.find({ menu_id : menu_id});
 
     res.status(200).json({
       status: 200,
       message: `Menu items fetched successfully`,
       menu: menu,
-      menuItems: menuItems
+      //menuItems: menuItems
     });
   } catch (error) {
     res.status(500).json({
       status: 500,
       message: `Error occurred while fetching menu items`,
-      error: error.message
+      error: error.message,
     });
   }
 };
 
-exports.getAllMenuItemsByMenuId = async function(req, res) {
-  try {
-    const { menu_id } = req.params;
+// exports.getAllMenuItemsByMenuId = async function(req, res) {
+//   try {
+//     const { menu_id } = req.params;
 
-    const menuitems = await MenuItem.findById(menu_id);
+//     const menuitems = await MenuItem.findById(menu_id);
 
-    if (!menuitems) {
-      return res.status(404).json({
-        status: 404,
-        message: `Menu item not found`
-      });
-    }
+//     if (!menuitems) {
+//       return res.status(404).json({
+//         status: 404,
+//         message: `Menu item not found`
+//       });
+//     }
 
-    res.status(200).json({
-      status: 200,
-      message: `Menu item fetched successfully`,
-      menuitems: menuitems
-    });
-  } catch (error) {
-    res.status(500).json({
-      status: 500,
-      message: `Error occurred`,
-      error: error.message
-    });
-  }
-};
+//     res.status(200).json({
+//       status: 200,
+//       message: `Menu item fetched successfully`,
+//       menuitems: menuitems
+//     });
+//   } catch (error) {
+//     res.status(500).json({
+//       status: 500,
+//       message: `Error occurred`,
+//       error: error.message
+//     });
+//   }
+// };
 
-
+/* 
 exports.getAllOrderItemsByOrderId = async function(req, res) {
   try {
     const { order_id } = req.params;
@@ -376,9 +394,9 @@ exports.getAllOrderItemsByOrderId = async function(req, res) {
       error: error.message
     });
   }
-};
+}; */
 
-exports.getMenuItemById = async function(req, res) {
+/* exports.getMenuItemById = async function(req, res) {
   try {
     const { id } = req.params;
 
@@ -403,9 +421,9 @@ exports.getMenuItemById = async function(req, res) {
       error: error.message
     });
   }
-};
+}; */
 
-exports.getTableById = async function(req, res) {
+/* exports.getTableById = async function(req, res) {
   try {
 
     const restauranttables = await RestaurantTable.findById(req.params.id);
@@ -429,35 +447,37 @@ exports.getTableById = async function(req, res) {
       error: error.message
     });
   }
-};
+}; */
 
-exports.getUserById = async function(req, res) {
+exports.getUserById = async function (req, res) {
   try {
+    const { user_id } = req.params;
 
-    const user = await User.findById(req.params.id);
+    console.log(user_id);
+    const user = await User.findById(user_id);
 
     if (!user) {
       return res.status(404).json({
         status: 404,
-        message: `User not found`
+        message: `User not found`,
       });
     }
 
     res.status(200).json({
       status: 200,
       message: `User fetched successfully`,
-      user: user
+      user: user,
     });
   } catch (error) {
     res.status(500).json({
       status: 500,
       message: `Error occurred while fetching user`,
-      error: error.message
+      error: error.message,
     });
   }
 };
 
-exports.getFeedbackUnderOrder = async function(req, res){
+/* exports.getFeedbackUnderOrder = async function(req, res){
   
 
   const {id} = req.params;
@@ -475,87 +495,88 @@ exports.getFeedbackUnderOrder = async function(req, res){
   catch(error){
     res.status(500).json({message: "Cant get"});
   }
-};
+}; */
 
 exports.editUser = async function (req, res) {
-    try {
-        const { id } = req.params;
-        const { email, password, fullName, role } = req.body;
-        const updated_at = new Date();
-   
-        // Validate input
-        if (!email || !password || !fullName || !role) {
-          return res.status(400).json({ message: "Missing required fields" });
-        }
-   
-        // Find the user by email
-        const user = await User.findById({ id });
-   
-        if (!user) {
-          return res.status(404).json({status: 400, message: "User not found" });
-        }
-   
-        // Update the user's password and full name
-        user.email = email;
-        user.password = password;
-        user.fullName = fullName;
-        user.role = role;
-        user.updated_at = updated_at;
-   
-        // Save the user
-        try {
-          await user.save();
-          res.status(200).json({ status:200, message: "User has been updated successfully" });
-        } catch (saveError) {
-          console.error(saveError);
-          res.status(500).json({ status: 400, message: "Error updating user" });
-        }
-      } catch (error) {
-        console.error(error);
-        res.status(500).json({ status: 400, message: "Error processing request" });
-      }
+  try {
+    const { user_id } = req.params;
+    const { email, password, fullName, role } = req.body;
+    const updated_at = new Date();
 
+    // Validate input
+    if (!email || !password || !fullName || !role) {
+      return res.status(400).json({ message: "Missing required fields" });
+    }
+
+    // Find the user by email
+    const user = await User.findById(user_id);
+
+    if (!user) {
+      return res.status(404).json({ status: 400, message: "User not found" });
+    }
+
+    // Update the user's password and full name
+    user.email = email;
+    user.password = password;
+    user.fullName = fullName;
+    user.role = role;
+    user.updated_at = updated_at;
+
+    // Save the user
+    try {
+      await user.save();
+      res
+        .status(200)
+        .json({ status: 200, message: "User has been updated successfully" });
+    } catch (saveError) {
+      console.error(saveError);
+      res.status(500).json({ status: 400, message: "Error updating user" });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ status: 400, message: "Error processing request" });
+  }
 };
 
 exports.editMenu = async function (req, res) {
   try {
+    const { menu_id } = req.params;
+    const { name, description } = req.body;
+    const updated_at = new Date();
 
-      const {id} = req.params;
-      const { name, description } = req.body;
-      const updated_at = new Date();
- 
-      // Validate input
-      if (!name || !description) {
-        return res.status(400).json({ message: "Missing required fields" });
-      }
- 
-      // Find the menu by id
-      const menu = await Menu.findById({ id });
- 
-      if (!menu) {
-        return res.status(404).json({status: 400, message: "Menu not found" });
-      }
- 
-      menu.name = name;
-      menu.description = description;
-      menu.updated_at = updated_at;
- 
-      // Save the user
-      try {
-        await menu.save();
-        res.status(200).json({ status:200, message: "Menu has been updated successfully" });
-      } catch (saveError) {
-        console.error(saveError);
-        res.status(500).json({ status: 400, message: "Error updating menu" });
-      }
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ status: 400, message: "Error processing request" });
+    // Validate input
+    if (!name || !description) {
+      return res.status(400).json({ message: "Missing required fields" });
     }
 
+    // Find the menu by id
+    const menu = await Menu.findById(menu_id);
+
+    if (!menu) {
+      return res.status(404).json({ status: 400, message: "Menu not found" });
+    }
+
+    menu.name = name;
+    menu.description = description;
+    menu.updated_at = updated_at;
+
+    // Save the user
+    try {
+      await menu.save();
+      res
+        .status(200)
+        .json({ status: 200, message: "Menu has been updated successfully" });
+    } catch (saveError) {
+      console.error(saveError);
+      res.status(500).json({ status: 400, message: "Error updating menu" });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ status: 400, message: "Error processing request" });
+  }
 };
 
-exports.editOrder = async function (req, res) {
+/* exports.editOrder = async function (req, res) {
   try {
 
       const {id} = req.params;
@@ -592,10 +613,9 @@ exports.editOrder = async function (req, res) {
       console.error(error);
       res.status(500).json({ status: 400, message: "Error processing request" });
     }
-};
+}; */
 
-
-exports.editOrderItem = async function (req, res) {
+/* exports.editOrderItem = async function (req, res) {
   try {
 
       const {id} = req.params;
@@ -630,9 +650,9 @@ exports.editOrderItem = async function (req, res) {
       console.error(error);
       res.status(500).json({ status: 400, message: "Error processing request" });
     }
-};
+}; */
 
-exports.editMenuItem = async function (req, res) {
+/* exports.editMenuItem = async function (req, res) {
   try {
 
       const {id} = req.params;
@@ -669,18 +689,18 @@ exports.editMenuItem = async function (req, res) {
       res.status(500).json({ status: 400, message: "Error processing request" });
     }
 
-};
+}; */
 
-exports.editTable = async function (req, res) {
+/* exports.editTable = async function (req, res) {
 
   try {
 
       const {id} = req.params;
-      const { name } = req.body;
+      const { name, status } = req.body;
       const updated_at = new Date();
  
       // Validate input
-      if (!name) {
+      if (!name || !status) {
         return res.status(400).json({ message: "Missing required fields" });
       }
  
@@ -692,6 +712,7 @@ exports.editTable = async function (req, res) {
       }
  
       restauranttables.name = name;
+      restauranttables.status = status;
       restauranttables.updated_at = updated_at;
  
       // Save the user
@@ -707,43 +728,57 @@ exports.editTable = async function (req, res) {
       res.status(500).json({ status: 400, message: "Error processing request" });
     }
 
-};
+}; */
 
 exports.deleteUser = async function (req, res) {
-    try{
-    if (!req.params.id) {
-        return res.status(400).json({ status:400, message: "Please provide an email" });
-      }
-      const user = await User.findOne({ id: req.params.id });
-      if (!user) {
-        return res.status(404).json({ status:400, message: "User not found" });
-      }
-      await User.deleteOne({ id: req.params.id });
-      return res.status(200).json({ status:200, message: "User has been deleted successfully" });
-    } catch (error) {
-      console.error(error);
-      return res.status(500).json({ status:400, message: "Error deleting user" });
+  try {
+    const { user_id } = req.params;
+    if (!user_id) {
+      return res
+        .status(400)
+        .json({ status: 400, message: "Please provide a valid id" });
     }
-};
-
-exports.deleteMenu = async function (req, res) {
-  try{
-  if (!req.params.id) {
-      return res.status(400).json({ status:400, message: "Please provide menu id" });
+    const user = await User.findById(user_id);
+    if (!user) {
+      return res.status(404).json({ status: 400, message: "User not found" });
     }
-    const menu = await Menu.findOne({ id: req.params.id });
-    if (!menu) {
-      return res.status(404).json({ status:400, message: "Menu not found" });
-    }
-    await Menu.deleteOne({ id: req.params.id });
-    return res.status(200).json({ status:200, message: "Menu has been deleted successfully" });
+    await User.deleteOne({ _id: user_id });
+    return res
+      .status(200)
+      .json({ status: 200, message: "User has been deleted successfully" });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ status:400, message: "Error deleting menu" });
+    return res
+      .status(500)
+      .json({ status: 400, message: "Error deleting user" });
   }
 };
 
-exports.deleteMenuItem = async function (req, res) {
+exports.deleteMenu = async function (req, res) {
+  try {
+    const { menu_id } = req.params;
+    if (!menu_id) {
+      return res
+        .status(400)
+        .json({ status: 400, message: "Please provide menu id" });
+    }
+    const menu = await Menu.findById(menu_id);
+    if (!menu) {
+      return res.status(404).json({ status: 400, message: "Menu not found" });
+    }
+    await Menu.deleteOne({ _id: menu_id });
+    return res
+      .status(200)
+      .json({ status: 200, message: "Menu has been deleted successfully" });
+  } catch (error) {
+    console.error(error);
+    return res
+      .status(500)
+      .json({ status: 400, message: "Error deleting menu" });
+  }
+};
+
+/* exports.deleteMenuItem = async function (req, res) {
   try{
   if (!req.params.id) {
       return res.status(400).json({ status:400, message: "Please provide menu item id" });
@@ -758,10 +793,9 @@ exports.deleteMenuItem = async function (req, res) {
     console.error(error);
     return res.status(500).json({ status:400, message: "Error deleting menu item" });
   }
-};
+}; */
 
-
-exports.deleteTable = async function (req, res) {
+/* exports.deleteTable = async function (req, res) {
   try{
   if (!req.params.id) {
       return res.status(400).json({ status:400, message: "Please provide table id" });
@@ -776,9 +810,9 @@ exports.deleteTable = async function (req, res) {
     console.error(error);
     return res.status(500).json({ status:400, message: "Error deleting table" });
   }
-};
+}; */
 
-exports.deleteOrderItem = async function (req, res) {
+/* exports.deleteOrderItem = async function (req, res) {
   try{
   if (!req.params.id) {
       return res.status(400).json({ status:400, message: "Please provide order item id" });
@@ -793,20 +827,22 @@ exports.deleteOrderItem = async function (req, res) {
     console.error(error);
     return res.status(500).json({ status:400, message: "Error deleting order item" });
   }
-};
+}; */
 
 exports.loginUser = async function (req, res) {
-    var {email, password} = req.body;
-    try {
-        let user = await service.existsUser(email, password);
-        if (user) {
-            return res.status(200).json({status:200, message:"login", exist:true, user: user});
-        } else {
-            return res.status(200).json({status: 200, message: "Enter correct details", exist: false});
-        }
-    } catch(e) {
-        return res.status(400).json({status:400, message:e.message});
+  var { email, password } = req.body;
+  try {
+    let user = await service.existsUser(email, password);
+    if (user) {
+      return res
+        .status(200)
+        .json({ status: 200, message: "login", exist: true, user: user });
+    } else {
+      return res
+        .status(200)
+        .json({ status: 200, message: "Enter correct details", exist: false });
     }
+  } catch (e) {
+    return res.status(400).json({ status: 400, message: e.message });
+  }
 };
-
-
