@@ -7,6 +7,7 @@ import biryani from '../assets/biryani.png';
 import food from '../assets/food.jpg';
 import spices from '../assets/spices.png';
 import white from '../assets/white.svg';
+import table from '../assets/table.png';
 
 export default {
     loginimg,
@@ -17,5 +18,6 @@ export default {
     biryani,
     food,
     spices,
-    white
+    white,
+    table
 }
