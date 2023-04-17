@@ -10,23 +10,28 @@ function CarouselTestimonials() {
       <Carousel.Item>
       <img src={images.white} alt="img" />
         <Carousel.Caption>
-          <h5>First slide label</h5>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          <h4>“I will definitely be back!”</h4>
+          <p>Very good service, good menu … not overly extensive. Food was very good quality all around.</p>
+          <i> - Raghuvaran </i>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
       <img src={images.white} alt="img" />
         <Carousel.Caption>
-          <h5>Second slide label</h5>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <h4>“Always worth the stop.”</h4>
+          <p>“This is always our dinner stop before heading home from office. Always delicious.”</p>
+          <i> - Krishna </i>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
       <img src={images.white} alt="img" />
         <Carousel.Caption>
-          <h5>Third slide label</h5>
+          <h4>“Their biryani are top-notch.”</h4>
           <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+          The food was excellent and so was the service.  I had the fry piece biryani was awesome. 
+          </p>
+          <p>
+          <i> - Samantha </i>
           </p>
         </Carousel.Caption>
       </Carousel.Item>
