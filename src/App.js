@@ -16,9 +16,10 @@ import MenuPage from "./pages/admin/menu";
 import TablesPage from "./pages/admin/tables";
 import StaffPage from "./pages/admin/staff";
 // staff
-import StaffTablesPage from "./pages/staff/staff-menu";
-import StaffMenuPage from "./pages/staff/staff-tables";
-//import CustomerFeedbackPage from "./pages/staff/staff-feedback";
+import StaffTablesPage from "./pages/staff/staff-tables";
+import StaffMenuPage from "./pages/staff/staff-menu";
+import CustomerFeedbackPage from "./pages/staff/staff-feedback";
+import ViewOrderPage from "./pages/staff/staff-viewOrders";
 
 function App() {
   return (
@@ -36,7 +37,8 @@ function App() {
         <Route path="/staff" element={<StaffLayout />}>
           <Route index element={<StaffTablesPage />} />
           <Route path="staff-menu" element={<StaffMenuPage />} />
-          {/* <Route path="staff-feedback" element={<CustomerFeedbackPage />} /> */}
+          <Route path="staff-feedback" element={<CustomerFeedbackPage />} />
+          <Route path="staff-vieworder" element={<ViewOrderPage />} />
         </Route>
       </Routes>
     </Router>
