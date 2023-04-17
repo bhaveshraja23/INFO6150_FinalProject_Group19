@@ -43,6 +43,11 @@ exports.createOrder = async function (req, res) {
       tableId: tableId,
     });
 
+    restTable.status = req.body.status;
+    restTable.updated_at = Date.now();
+
+    await restTable.save();
+
     await orders.save();
 
     res.status(201).json({ message: "Order saved", data: orders });

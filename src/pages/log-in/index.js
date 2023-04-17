@@ -14,8 +14,8 @@ const LogIn = ({ handleAuth }) => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = React.useState({
-    email: "pavithra@gmail.com",
-    password: "Pavithra@123",
+    email: "admin@gmail.com",
+    password: "Admin@123",
   });
   const handleFormData = (key, value) => {
     setFormData((prevData) => ({ ...prevData, [key]: value }));
