@@ -4,6 +4,7 @@ import "./styles.scss";
 import NavBar from '../../../components/navbar/NavBar';
 import images from "../../../constants/images";
 import Card from 'react-bootstrap/Card';
+import CarouselTestimonials from '../../../components/carousel/carousel';
 
 
 const Landing = () => {
@@ -11,18 +12,25 @@ const Landing = () => {
     <div>
       < NavBar />
       <div className='hero-unit'>
-        <div className='section-left'>
+      <img src={images.food} alt="food img" />
+      <div className='text-container'>
+          <h2>We <span> continuously serve</span> your high expectations of delicious taste of food.</h2>
+          <button className='menu-btn'>View Menu</button>
+        </div>
+        {/* <div className='section-left'>
           <h3>We <span> continuously serve</span> your high expectations of delicious taste of food.</h3>
-        </div>
-        <div className='section-right'>
+        </div> */}
+        {/* <div className='section-right'>
           <img src={images.heroimg} alt="food img" />
-        </div>
+        </div> */}
       </div>
 
       <div className='section-title'> 
         <h2>Why choose us</h2>
+        <p>We can give you thousands of reasons, but here are few important.</p>
       </div>
 
+      <div className='why-choose-us'>
       <div className='features'>
         <div className='f'>
           <Card style={{ width: '18rem' }}>
@@ -93,17 +101,27 @@ const Landing = () => {
             </Card.Body>
           </Card>
         </div>
+      </div>
       </div>
 
       <div className='explore'>
         <div className='img-left'>
-          <img src={images.menuimg} alt="food img" />
+          <img src={images.spices} alt="food img" />
         </div>
         <div className='text-right'>
           <p>Items from our popular menu.</p>
-          <h3>100+</h3>
-          <h4>Items from our popular menu.</h4>
+          <h1>100+</h1>
+          <h3>Items from our popular menu.</h3>
+          <button className='menu-btn'>View Menu</button>
         </div>
+      </div>
+
+      <div className='testimonials'> 
+        <CarouselTestimonials />
+      </div>
+
+      <div className='reserve-table'>
+        
       </div>
     </div>
   )
