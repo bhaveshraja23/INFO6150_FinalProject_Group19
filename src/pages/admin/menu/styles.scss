@@ -26,12 +26,12 @@
             flex-direction: row;
 
             .items {
-                width: 80%;
+                width: 100%;
                 margin: 0;
             }
 
             .item-button {
-                width: 40% !important;
+                width: 50% !important;
                 align-items: center;
                 align-content: center;
                 display: contents;
@@ -47,6 +47,13 @@
                 margin-top: 4px;
                 padding: 0;
             }
+            .card-button-container {
+                padding-top: 10px;
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                gap: 10px;
+              }
         }
     }
 }
