@@ -75,7 +75,7 @@ function App() {
           </>
         )}
 
-        {isUserAuth && isUserAuth.role === "ADMIN" && (
+        {isUserAuth && isUserAuth.role.toUpperCase() === "ADMIN" && (
           <Route path="/admin" element={<AdminLayout />}>
             <Route index element={<DashboardPage />} />
             <Route path="menu" element={<MenuPage />} />
@@ -84,7 +84,7 @@ function App() {
           </Route>
         )}
 
-        {isUserAuth && isUserAuth.role === "STAFF" && (
+        {isUserAuth && isUserAuth.role.toUpperCase() === "STAFF" && (
           <Route path="/staff" element={<StaffLayout />}>
             <Route index element={<StaffTablesPage />} />
             <Route path="staff-menu" element={<StaffMenuPage />} />

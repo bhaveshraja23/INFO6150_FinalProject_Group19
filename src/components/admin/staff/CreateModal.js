@@ -8,16 +8,14 @@ import { staffService } from "../../../services/admin/staff";
 
 const StaffCreateView = ({ staff, setStaff }) => {
   let defaultData = {
-    name: "",
-    //email: "",
-    //password: "",
-    //role: "STAFF",
-    //status: "EMPTY",
-    //defaultStaffId: null,
+    fullName: "",
+    email: "",
+    password: "",
+    role: "",
   };
 
   const [formLoader, setFormLoader] = React.useState(false);
-  const [formData, setFormData] = React.useState(defaultData.name);
+  const [formData, setFormData] = React.useState(defaultData);
   const handleFormData = (key, value) => {
     setFormData((prevData) => ({ ...prevData, [key]: value }));
   };
@@ -35,7 +33,7 @@ const StaffCreateView = ({ staff, setStaff }) => {
   const handleFormSubmit = async () => {
     setFormLoader(true);
     await staffService
-      .create({name: formData.name})
+      .create(formData)
       .then((response) => {
         setStaff((prevData) => [...prevData, response.data]);
         handleModalClose();

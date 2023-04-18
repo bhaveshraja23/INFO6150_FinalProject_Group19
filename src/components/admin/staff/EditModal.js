@@ -27,9 +27,11 @@ const StaffEditView = ({ data, setStaff }) => {
     setModal(true);
     setFormData({
       id: data._id,
-      name: data.name,
-      //status: data.status,
-      //defaultStaffId: data.defaultStaffId,
+      fullName: data.fullName,
+      email: data.email,
+      password: data.password,
+      role: data.role,
+      
     });
   };
   const handleModalClose = () => {
