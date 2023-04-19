@@ -1,5 +1,6 @@
 var service = require("../services/service");
 var User = require("../models/userModel");
+var Order = require("../models/orderModel");
 
 exports.createUser = async function (req, res) {
   const user = new User({
@@ -10,18 +11,47 @@ exports.createUser = async function (req, res) {
     created_at: Date.now(),
     updated_at: Date.now(),
   });
-  user
-    .save()
-    .then(() => {
+  let customer;
+  try {
+    customer = await user.save();
+  } catch (err) {
+    res.status(500).json({ status: 400, message: err.message });
+    return;
+  }
+
+  console.log('user created', customer);
+
+  if (user.role === 'Customer') {
+    console.log(req.body);
+    const order = new Order({
+      status: "PENDING",
+      payment: null, 
+      people_count: null, 
+      type: null, 
+      created_at: Date.now(),
+      updated_at: Date.now(),
+      customerId: customer._id,
+      staffId: null,
+      tableId: null, 
+    });
+    console.log(order);
+    try {
+      await order.save();
       res.status(201).json({
         status: 201,
-        data: user,
-        message: "New user has been added successfully",
+        data: { customer, order },
+        message: "New user and order have been added successfully",
       });
-    })
-    .catch((err) => {
+    } catch (err) {
       res.status(500).json({ status: 400, message: err.message });
+    }
+  } else {
+    res.status(201).json({
+      status: 201,
+      data: customer,
+      message: "New user has been added successfully",
     });
+  }
 };
 
 exports.getAllUsers = async function (req, res) {
