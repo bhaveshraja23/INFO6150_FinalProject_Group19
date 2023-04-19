@@ -34,6 +34,36 @@ exports.getAllMenu = async function (req, res) {
       });
     });
 };
+
+exports.getAllMenuWithMenuItems = async function(req, res) {
+  try {
+    const menus = await Menu.find().exec();
+    const menuItems = await MenuItem.find().populate('menuId').exec();
+    const menuMap = {};
+    menus.forEach((menu) => {
+      menuMap[menu._id] = {
+        id: menu._id,
+        name: menu.name,
+        items: [],
+      };
+    });
+    menuItems.forEach((menuItem) => {
+      const menuId = menuItem.menuId._id;
+      menuMap[menuId].items.push({
+        menuItem
+      });
+    });
+    const result = Object.values(menuMap).map((menu) => ({
+      id: menu.id,
+      name: menu.name,
+      items: menu.items,
+    }));
+    res.send(result);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 exports.getMenuById = async function (req, res) {
   try {
     const { menu_id } = req.params;

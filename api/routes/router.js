@@ -109,5 +109,8 @@ module.exports = function (app) {
     controllerFeedback.getFeedbackUnderOrder
   );
 
+  router.get("/api/admin/table/:table_id/orders", controllerOrders.getOrdersByTableId);
+  router.get("/api/admin/menu-with-items", controllerMenuItems.getAllMenuWithMenuItems);
+
   app.use("/", router);
 };

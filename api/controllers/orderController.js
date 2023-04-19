@@ -84,16 +84,18 @@ exports.createOrderItem = async function (req, res) {
 };
 
 exports.getAllOrders = async function (req, res) {
-  Order.find()
-    .select([])
-    .then((documents) => {
-      res.status(200).json({
-        status: 200,
-        message: "Orders have been fetched successfully",
-        orders: documents,
-      });
+  try {
+    const orders = await Order.find().populate('customerId');
+    res.status(200).json({
+      status: 200,
+      message: "Orders have been fetched successfully",
+      orders: orders,
     });
+  } catch (err) {
+    res.status(500).json({ status: 500, message: err.message });
+  }
 };
+
 
 exports.getAllOrderItemsByOrderId = async function (req, res) {
   try {
@@ -231,3 +233,13 @@ exports.deleteOrderItem = async function (req, res) {
       .json({ status: 400, message: "Error deleting order item" });
   }
 };
+
+exports.getOrdersByTableId = async(req, res) => {
+  try{
+    const {table_id} = req.params;
+    const orders = await Order.find({tableId: table_id});
+    res.status(200).json(orders);
+  } catch(err){
+    console.log(err.message);
+  }
+}

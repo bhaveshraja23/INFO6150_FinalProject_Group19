@@ -85,11 +85,7 @@ function App() {
         )}
 
         {isUserAuth && isUserAuth.role.toUpperCase() === "STAFF" && (
-          <Route path="/staff" element={<StaffLayout />}>
-            <Route index element={<StaffTablesPage />} />
-            <Route path="staff-menu" element={<StaffMenuPage />} />
-            {/* <Route path="staff-feedback" element={<CustomerFeedbackPage />} /> */}
-          </Route>
+          <Route path="/staff" element={<StaffTablesPage />} />
         )}
       </Routes>
     </Router>

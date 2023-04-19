@@ -20,12 +20,8 @@ const Staff = () => {
       setLoader(true);
       const staffData = await staffService.getAll();
 
-      if (
-        staffData &&
-        staffData.users &&
-        staffData.users.length > 0
-      )
-      setStaff(staffData.users);
+      if (staffData && staffData.users && staffData.users.length > 0)
+        setStaff(staffData.users);
 
       setLoader(false);
     };
@@ -48,10 +44,7 @@ const Staff = () => {
             <>
               {staff && staff.length > 0 ? (
                 <div>
-                  <StaffView
-                    staff={staff}
-                    setStaff={setStaff}
-                  />
+                  <StaffView staff={staff} setStaff={setStaff} />
                 </div>
               ) : (
                 <div className="text-center text-secondary">
