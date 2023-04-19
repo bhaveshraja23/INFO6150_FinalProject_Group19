@@ -67,4 +67,10 @@
       }
     }
   }
+  @media (min-width: 320px) and (max-width: 820px) {
+    .table-render-view {
+      grid-template-columns: auto;
+    }
+  }  
+  
 }

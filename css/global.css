@@ -1,0 +1,13 @@
+.custom-modal .custom-modal-header {
+  font-size: 20px;
+  font-weight: 500;
+}
+.custom-modal .custom-modal-body {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.custom-modal .custom-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}/*# sourceMappingURL=global.css.map */
