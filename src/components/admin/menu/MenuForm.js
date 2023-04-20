@@ -10,7 +10,7 @@ const MenuFormView = ({ data, handleData }) => {
         <Form.Label>Name</Form.Label>
         <Form.Control
           type="text"
-          placeholder="Drinks"
+          placeholder="Enter Menu Item"
           autoFocus
           value={data.name}
           onChange={(e) => handleData("name", e.target.value)}
@@ -20,7 +20,7 @@ const MenuFormView = ({ data, handleData }) => {
         <Form.Label>description</Form.Label>
         <Form.Control
           type="text"
-          placeholder="item"
+          placeholder="Description"
           autoFocus
           value={data.description}
           onChange={(e) => handleData("description", e.target.value)}

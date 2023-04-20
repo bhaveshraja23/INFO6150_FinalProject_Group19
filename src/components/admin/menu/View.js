@@ -13,14 +13,14 @@ const MenuView = ({ menu, setMenu }) => {
               <div className="items">
                 <div><h4>{_menu.name}</h4></div>
                 <div><p>{_menu.description}</p></div>
-                <div><button className="item.button">Add Item</button></div>
-                {/* <div className="card-button-container">
-                <MenuEdit data = {_menu} setMenu={setMenu} />
-                <MenuDelete data = {_menu} setMenu={setMenu} /> */}
+                <button className="item.button">Add Item</button>
+                <div className="card-button-container">
+                  <MenuEdit data = {_menu} setMenu={setMenu} />
+                  <MenuDelete data = {_menu} setMenu={setMenu} />
+              </div>
               </div>
             </div>
             </div>
-            //</div>
           ))}
       </div>
     );

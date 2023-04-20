@@ -48,13 +48,22 @@ const Menu = () => {
             menu={menu}
             setMenu={setMenu}/>
           </div>
-        ) : (
+          ) : (
           <div className="text-center text-secondary">
             No Menu is created
           </div>
         )}
         </>
-      {/* <div className="menu-container">
+      </div>
+      )}
+    </div>
+  );
+};
+
+export default Menu;
+
+
+{/* <div className="menu-container">
         <div className="menu">
           <div className="items">
             <h4>Appetizers</h4>
@@ -92,10 +101,3 @@ const Menu = () => {
           </div>
         </div>
       </div> */}
-      </div>
-      )}
-    </div>
-  );
-};
-
-export default Menu;
