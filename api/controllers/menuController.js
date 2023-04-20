@@ -98,9 +98,7 @@ exports.getAllMenuItemsByMenuId = async function (req, res) {
   try {
     const { menu_id } = req.params;
 
-    const menuitems = await MenuItem.find({ menuId: menu_id });
-
-    console.log("menuitems", menuitems);
+    const menuitems = await MenuItem.find({menuId: menu_id});
 
     if (!menuitems) {
       return res.status(404).json({
