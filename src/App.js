@@ -80,7 +80,7 @@ function App() {
           <Route path="/admin" element={<AdminLayout />}>
             <Route index element={<DashboardPage />} />
             <Route path="menu" element={<MenuPage />} />
-            <Route path="menu/items" element={<MenuItemPage/>} />
+            <Route path="menu/:id" element={<MenuItemPage />} />
             <Route path="tables" element={<TablesPage />} />
             <Route path="staff" element={<StaffPage />} />
           </Route>

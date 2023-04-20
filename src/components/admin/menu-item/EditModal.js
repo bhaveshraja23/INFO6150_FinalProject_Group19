@@ -2,16 +2,16 @@ import React from "react";
 // bootstrap
 import { Button, Modal } from "react-bootstrap";
 // components
-import StaffForm from "./StaffForm";
+import MenuItemForm from "./MenuItemForm";
 // api services
-import { staffService } from "../../../services/admin/staff";
+import { menuItemService } from "../../../services/admin/menuItem";
 
-const StaffCreateView = ({ setStaff }) => {
+const MenuEditView = ({ data, setMenuItems }) => {
   let defaultData = {
-    fullName: "",
-    email: "",
-    password: "",
-    role: "",
+    id: "",
+    name: "",
+    description: "",
+    price: "",
   };
 
   const [formLoader, setFormLoader] = React.useState(false);
@@ -23,8 +23,14 @@ const StaffCreateView = ({ setStaff }) => {
   const [modal, setModal] = React.useState(false);
   const handleModalOpen = () => {
     setModal(true);
-    setFormData(defaultData);
+    setFormData({
+      id: data._id,
+      name: data.name,
+      description: data.description,
+      price: data.price,
+    });
   };
+
   const handleModalClose = () => {
     setModal(false);
     setFormData(defaultData);
@@ -32,10 +38,21 @@ const StaffCreateView = ({ setStaff }) => {
 
   const handleFormSubmit = async () => {
     setFormLoader(true);
-    await staffService
-      .create(formData)
+    await menuItemService
+      .update(formData)
       .then((response) => {
-        setStaff((prevData) => [...prevData, response.data]);
+        setMenuItems((prevData) => {
+          return prevData.map((_menu) =>
+            _menu._id === formData.id
+              ? {
+                  ..._menu,
+                  name: formData.name,
+                  description: formData.description,
+                  price: formData.price,
+                }
+              : _menu
+          );
+        });
         handleModalClose();
       })
       .catch((error) => {
@@ -47,26 +64,23 @@ const StaffCreateView = ({ setStaff }) => {
   return (
     <div>
       <Button size="sm" variant="primary" onClick={handleModalOpen}>
-        Create Staff
+        Edit
       </Button>
 
       <Modal show={modal} onHide={handleModalClose} className="custom-modal">
         <Modal.Body>
           {/* header */}
-          <div className="custom-modal-header">Create Staff</div>
+          <div className="custom-modal-header">Update Menu</div>
 
           {/* content */}
           <div className="custom-modal-body">
-            <StaffForm
-              data={formData}
-              handleData={handleFormData}
-              update={false}
-            />
+            <MenuItemForm data={formData} handleData={handleFormData} />
           </div>
 
           {/* footer */}
           <div className="custom-modal-footer">
             <Button
+              type="button"
               size="sm"
               variant="light"
               onClick={handleModalClose}
@@ -75,12 +89,13 @@ const StaffCreateView = ({ setStaff }) => {
               close
             </Button>
             <Button
+              type="button"
               size="sm"
               variant="primary"
               onClick={handleFormSubmit}
               disabled={formLoader}
             >
-              {formLoader ? "Processing..." : "Continue"}
+              {formLoader ? "Processing..." : "Edit"}
             </Button>
           </div>
         </Modal.Body>
@@ -89,4 +104,4 @@ const StaffCreateView = ({ setStaff }) => {
   );
 };
 
-export default StaffCreateView;
+export default MenuEditView;

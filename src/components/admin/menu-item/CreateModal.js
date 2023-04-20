@@ -2,29 +2,41 @@ import React from "react";
 // bootstrap
 import { Button, Modal } from "react-bootstrap";
 // components
-import MenuForm from "./MenuForm";
-// api services
-import { menuService } from "../../../services/admin/menu";
+import MenuItemForm from "./MenuItemForm";
+// services
+import { menuItemService } from "../../../services/admin/menuItem";
 
-const MenuDeleteView = ({ data, setMenu }) => {
+const MenuCreateView = ({ menuId, setMenuItems }) => {
+  let defaultData = {
+    name: "",
+    description: "",
+    price: 0,
+  };
+
   const [formLoader, setFormLoader] = React.useState(false);
+  const [formData, setFormData] = React.useState(defaultData);
+  const handleFormData = (key, value) => {
+    setFormData((prevData) => ({ ...prevData, [key]: value }));
+  };
 
   const [modal, setModal] = React.useState(false);
   const handleModalOpen = () => {
     setModal(true);
+    setFormData(defaultData);
   };
   const handleModalClose = () => {
     setModal(false);
+    setFormData(defaultData);
   };
 
   const handleFormSubmit = async () => {
     setFormLoader(true);
-    await menuService
-      .delete(data?._id)
+    let payload = { ...formData, menu_id: menuId };
+
+    await menuItemService
+      .create(payload)
       .then((response) => {
-        setMenu((prevData) => {
-          return prevData.filter((_menu) => _menu._id !== data?._id);
-        });
+        setMenuItems((prevData) => [...prevData, response.data]);
         handleModalClose();
       })
       .catch((error) => {
@@ -35,18 +47,18 @@ const MenuDeleteView = ({ data, setMenu }) => {
 
   return (
     <div>
-      <Button size="sm" variant="danger" onClick={handleModalOpen}>
-        Delete
+      <Button size="md" variant="primary" onClick={handleModalOpen}>
+        Add Menu Item
       </Button>
 
       <Modal show={modal} onHide={handleModalClose} className="custom-modal">
         <Modal.Body>
           {/* header */}
-          <div className="custom-modal-header">Delete Name</div>
+          <div className="custom-modal-header">Add Menu</div>
 
           {/* content */}
           <div className="custom-modal-body">
-            Are you sure you want to delete this Name?
+            <MenuItemForm data={formData} handleData={handleFormData} />
           </div>
 
           {/* footer */}
@@ -57,15 +69,15 @@ const MenuDeleteView = ({ data, setMenu }) => {
               onClick={handleModalClose}
               disabled={formLoader}
             >
-              close
+              cancel
             </Button>
             <Button
               size="sm"
-              variant="danger"
+              variant="primary"
               onClick={handleFormSubmit}
               disabled={formLoader}
             >
-              {formLoader ? "Processing..." : "Delete"}
+              {formLoader ? "Processing..." : "Add"}
             </Button>
           </div>
         </Modal.Body>
@@ -74,4 +86,4 @@ const MenuDeleteView = ({ data, setMenu }) => {
   );
 };
 
-export default MenuDeleteView;
+export default MenuCreateView;
