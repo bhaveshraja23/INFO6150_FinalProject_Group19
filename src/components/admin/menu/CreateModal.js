@@ -43,7 +43,7 @@ const MenuCreateView = ({setMenu}) => {
   
     return (
       <div>
-        <Button size="sm" variant="primary" onClick={handleModalOpen}>
+        <Button size="md" variant="primary" onClick={handleModalOpen}>
           Add Menu
         </Button>
   

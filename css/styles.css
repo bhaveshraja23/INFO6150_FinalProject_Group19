@@ -1,0 +1,52 @@
+.flex-right {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  border: 1px solid black;
+  overflow-y: auto;
+}
+.flex-right .top-bar {
+  height: 60px;
+  border: 1px solid #eeeeee;
+}
+.flex-right .menu-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 55px;
+}
+.flex-right .menu-container .menu {
+  border: 1px solid #e2e2e2;
+  width: 75%;
+  margin-top: 0 !important;
+  margin-bottom: 20px;
+  padding: 20px !important;
+  height: 13vh;
+  display: flex;
+  flex-direction: row;
+}
+.flex-right .menu-container .menu .items {
+  width: 100%;
+  margin: 0;
+}
+.flex-right .menu-container .menu .item-button {
+  width: 50% !important;
+  align-items: center;
+  align-content: center;
+  display: contents;
+}
+.flex-right .menu-container .menu h4 {
+  color: #0030A9;
+}
+.flex-right .menu-container .menu p {
+  color: #888888;
+  margin: 0;
+  margin-top: 4px;
+  padding: 0;
+}
+.flex-right .menu-container .menu .card-button-container {
+  padding-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+}/*# sourceMappingURL=styles.css.map */
