@@ -17,7 +17,7 @@ const [showNavbar, setShowNavbar] = useState(false);
 //      setShowNavbar(!showNavbar);
 //    };
   return (
-                
+      <>          
     <Navbar  bg="light" className="mb-3 navbar" expand="lg">
       <Container className="container">
       <div className="logo">
@@ -27,28 +27,29 @@ const [showNavbar, setShowNavbar] = useState(false);
         <Navbar.Offcanvas id={`offcanvasNavbar-expand-lg`}
               aria-labelledby={`offcanvasNavbarLabel-expand-lg`}
               placement="end">
-              <Offcanvas.Header closeButton>
+            <Offcanvas.Header closeButton>
               <Offcanvas.Title id={`offcanvasNavbarLabel-expand-lg`}>
               <div className="logo">
         <img src={images.dineordel1} alt="food img" />
       </div>
-                </Offcanvas.Title>
-              </Offcanvas.Header>
-              <Offcanvas.Body>
-          <Nav className="me-auto">
-          <div className={`nav-elements  ${showNavbar && "active"}`}>
-            <ul>
-              <li><NavLink to="/">Home</NavLink></li>
-              <li><NavLink to="/menu">Menu</NavLink></li>
-              <li><NavLink to="/about">About</NavLink></li>
-              <li><NavLink to="/reservation">Reservation</NavLink></li>
-            </ul>
-            </div>
-          </Nav>
+              </Offcanvas.Title>
+            </Offcanvas.Header>
+            <Offcanvas.Body>
+              <Nav className="justify-content-end">
+              <div className={`nav-elements  ${showNavbar && "active"}`}>
+                <ul className="nav-col">
+                    <li><NavLink to="/">Home</NavLink></li>
+                    <li><NavLink to="/menu">Menu</NavLink></li>
+                    <li><NavLink to="/about">About</NavLink></li>
+                    <li><NavLink to="/reservation">Reservation</NavLink></li>
+                </ul>
+              </div>
+             </Nav>
           </Offcanvas.Body>
         </Navbar.Offcanvas>
       </Container>
     </Navbar>
+    </>
   );
 };
 
