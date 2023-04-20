@@ -32,9 +32,9 @@ import {
     },
     update: async(data) =>{
       try{
-        console.log(data._id)
+        console.log(data.menu_id)
         const response = await axios.put(
-          ADMIN_MENU_CREATE_WITH_ID_ENDPOINT(data.id), data);
+          ADMIN_MENU_CREATE_WITH_ID_ENDPOINT(data.menu_id), data);
           return response.data;
 
         } catch(error){

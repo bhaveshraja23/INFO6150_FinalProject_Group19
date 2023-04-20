@@ -26,14 +26,14 @@ const MenuEditView = ({data, setMenu }) => {
       menu_id: data._id,
       name: data.name,
       description: data.description
-    }); console.log(data);
+    }); 
 
   };
 
   const handleModalClose = () => {
     setModal(false);
     setFormData(defaultData);
-  };
+  }; 
 
 
   const handleFormSubmit = async () => {
@@ -46,6 +46,7 @@ const MenuEditView = ({data, setMenu }) => {
             _menu._id === response.data._id ? response.data : _menu
           );
         });
+        console.log(response.data);
         handleModalClose();
       })
       .catch((error) => {
