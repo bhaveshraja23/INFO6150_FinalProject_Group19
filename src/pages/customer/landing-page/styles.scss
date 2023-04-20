@@ -192,8 +192,6 @@
     display: flex;
     position: relative;
     overflow: hidden;
-    
-    
 
 
     .reserve-form {
@@ -203,8 +201,6 @@
         flex-direction: column;
         overflow: hidden;
         padding: 120px;
-        //background-image: url('https://sortedfood.com/wp-content/themes/sorted-webflow/assets/images/156-v_m1.jpg');
-    
 
         .heading {
             width: 100%;
@@ -317,12 +313,10 @@
         margin-left: 300px;
     }
     .reserve-table{
-        height: 50vh;
-        
+        height: 60vh;
         .reserve-form {
             width: 100%;
-            padding: 0px;
-            margin-right: 0px;
+            padding: 90px;
             .heading {
                 width: 100%;
                 text-align: center;
@@ -334,30 +328,27 @@
     
         }
         .form-label{
-            margin-left: 200px;
-            margin-right: 0px;
+            margin-left: 90px;
         }
         .login-input{
-            margin-left: 200px;
-            margin-right: 0px;
-            
+            margin-left: 90px;
         }
         .btnlogin{
-            margin-left: 200px; 
-            margin-right: 0px;
-            
+            margin-left: 90px;
         }
+    
     }
     
     
 }
 //screen 390px
-@media (max-width: 390px) {
+@media (min-width: 390px) {
     .hero-unit {
-      height: 35vh;
+      height: 40vh;
       flex-direction: column;
 
       img {
+        
         width: 100%;
         height: 100%;
 
@@ -395,10 +386,9 @@
         }
     
         p {
-          font-size: 14px;
+          font-size: 16px;
           text-align: center;
-          padding-right: 30px;
-          padding-left: 30px;
+          padding: 10px;
         }
     }
 
@@ -415,7 +405,6 @@
             .f {
                 margin: 20px;
                 margin-top: 0;
-                font-size: 10px;
             }
             
         }
@@ -427,27 +416,22 @@
         flex-direction: column;
         justify-content: center !important;
         align-items: center !important;
-        height: 50vh;
+        height: 70vh;
       }
       .text-right{
         p{
-            font-size: 17px;
-            margin-left: 80px;
+            font-size: 20px;
+            margin-left: 50px;
         }
-        h1{
-            display: none;
-        }
-        h3{
-            display: none;
-        }
+        
       }
       .img-left {
-        width: 330px;
+        width: 350px;
         margin-bottom: 40px;
         
     }
     .explore-btn{
-        margin-left: 190px;
+        margin-left: 170px;
         width: 80px;
         height: 30px;
             .menu-btn{
@@ -455,12 +439,9 @@
             }
     }
     .reserve-table{
-        height: 70vh;
-        
-
+        height: 85vh;
         .reserve-form {
             width: 100%;
-            margin-top: 10px;
             .heading {
                 width: 100%;
                 text-align: center;
@@ -471,19 +452,23 @@
             display: none;
 
         }
-
-            .form-label{
-                margin-left: 20px;
-            }
-            .login-input{
-                margin-left: 20px;
-                width: 330px;
-            }
-            .btnlogin{
-                margin-left: 20px; 
-                width: 330px; 
-            }
-        }
-
+       // .form-item{
+            
+           // .form{
+                .form-label{
+                    margin-left: 0px;
+                    margin-right: 0px;
+                 }
+                .login-input{
+                 margin-left: 0px;
+                }
+                .btnlogin{
+                margin-left: 0px;
+                }
+            // }
+       // }
+    
+    }
+    
     
 }
