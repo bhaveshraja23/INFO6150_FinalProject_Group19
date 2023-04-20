@@ -196,11 +196,11 @@ const OrderItemView = ({ orderItems, setOrderItemsLoader, setOrderItems }) => {
               {calculateAmount()}
             </div>
           </div>
-          <div className="pay-button">
-            <Button variant="outline-primary" className="w-100">
+          {/* <div className="pay-button">
+            <Button variant="outline-primary" className="w-100" >
               PAY BILL
             </Button>
-          </div>
+          </div> */}
         </div>
       </div>
     </>
