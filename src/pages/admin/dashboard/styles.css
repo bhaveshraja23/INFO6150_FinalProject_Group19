@@ -1,0 +1,44 @@
+.flex-right {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  border: 1px solid black;
+}
+.flex-right .top-bar {
+  height: 60px;
+  border: 1px solid #eeeeee;
+}
+.flex-right .metric-container {
+  display: flex;
+  flex-direction: row;
+  margin-left: 40px;
+}
+.flex-right .metric-container .metric {
+  border: 1px solid #e2e2e2;
+  width: 220px;
+  margin-left: 30px;
+  padding: 20px;
+  height: 110px;
+}
+.flex-right .chart-container {
+  display: flex;
+  justify-content: space-between;
+}
+.flex-right .chart-wrapper {
+  width: 3in;
+  height: 3in;
+  box-sizing: border-box;
+}
+@media (min-width: 375px) and (max-width: 820px) {
+  .flex-right .metric-container {
+    flex-direction: column;
+    margin-left: 0;
+  }
+  .flex-right .metric {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 20px;
+    height: auto;
+  }
+}/*# sourceMappingURL=styles.css.map */
