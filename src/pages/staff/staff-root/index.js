@@ -11,8 +11,20 @@ import { staffService } from "../../../services/staff";
 //styles
 import "./styles.scss";
 import images from "../../../constants/images";
+import { useNavigate } from "react-router-dom";
+import { removeSessionStorage } from "../../../session/session-storage";
 
 const StaffMenuPage = () => {
+
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    
+    removeSessionStorage();
+
+    navigate("/log-in");
+  };
+
   let [searchParams] = useSearchParams();
   const table_id = searchParams.get("table_id");
   const order_id = searchParams.get("order_id");
@@ -106,7 +118,7 @@ const StaffMenuPage = () => {
         <div className="head-logo">
           <img src={images.dineordel} alt="food img" />
         </div>
-        <div className="head-menu">Logout</div>
+        <div className="head-menu" onClick={handleLogout}>Logout</div>
       </div>
       {loader ? (
         <div className="text-center text-secondary">Loading...</div>
