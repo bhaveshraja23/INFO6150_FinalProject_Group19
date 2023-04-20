@@ -1,58 +1,68 @@
 var service = require("../services/service");
 var User = require("../models/userModel");
 var Order = require("../models/orderModel");
+const bcrypt = require('bcrypt');
+
 
 exports.createUser = async function (req, res) {
-  const user = new User({
-    fullName: req.body.fullName,
-    email: req.body.email,
-    password: req.body.password,
-    role: req.body.role,
-    created_at: Date.now(),
-    updated_at: Date.now(),
-  });
-  let customer;
+
+  const {fullName, email, password, role} = req.body;
+
   try {
-    customer = await user.save();
-  } catch (err) {
-    res.status(500).json({ status: 400, message: err.message });
-    return;
-  }
 
-  console.log('user created', customer);
+  //   const salt = await bcrypt.genSalt(10);
+  //   this.password = await bcrypt.hash(this.password, salt);
+  //  const hashedPassword = await bcrypt.hash(password, 10);
 
-  if (user.role === 'Customer') {
-    console.log(req.body);
-    const order = new Order({
-      status: "PENDING",
-      payment: null, 
-      people_count: null, 
-      type: null, 
+    const user = new User({
+      fullName,
+      email,
+      password,
+      role,
       created_at: Date.now(),
       updated_at: Date.now(),
-      customerId: customer._id,
-      staffId: null,
-      tableId: null, 
-    });
-    console.log(order);
-    try {
-      await order.save();
-      res.status(201).json({
-        status: 201,
-        data: { customer, order },
-        message: "New user and order have been added successfully",
-      });
-    } catch (err) {
-      res.status(500).json({ status: 400, message: err.message });
-    }
-  } else {
-    res.status(201).json({
-      status: 201,
-      data: customer,
-      message: "New user has been added successfully",
-    });
+  });
+
+    const customer = await user.save();
+    res.status(201).json(customer);
+
+  } catch (err) {
+    res.status(500).json({ status: 400, message: err.message });
   }
 };
+
+
+  // if (user.role === 'Customer') {
+  //   console.log(req.body);
+  //   const order = new Order({
+  //     status: "PENDING",
+  //     payment: null, 
+  //     people_count: null, 
+  //     type: null, 
+  //     created_at: Date.now(),
+  //     updated_at: Date.now(),
+  //     customerId: customer._id,
+  //     staffId: null,
+  //     tableId: null, 
+    //});
+  //   try {
+  //     await order.save();
+  //     res.status(201).json({
+  //       status: 201,
+  //       data: { customer, order },
+  //       message: "New user and order have been added successfully",
+  //     });
+  //   } catch (err) {
+  //     res.status(500).json({ status: 400, message: err.message });
+  //   }
+  // } else {
+  //   res.status(201).json({
+  //     status: 201,
+  //     data: customer,
+  //     message: "New user has been added successfully",
+  //   });
+
+//};
 
 exports.getAllUsers = async function (req, res) {
   User.find()
