@@ -42,6 +42,7 @@ const LogIn = ({ handleAuth }) => {
         alert(error.message);
       });
 
+      
     console.log("payload", payload);
   };
 

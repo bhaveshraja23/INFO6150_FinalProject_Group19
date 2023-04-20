@@ -5,8 +5,21 @@ import { Outlet } from "react-router-dom";
 import "./styles.scss";
 import images from "../../constants/images";
 import { Link } from "react-router-dom";
+import {removeSessionStorage} from "../../session/session-storage";
+import { useNavigate } from "react-router-dom";
+import { authService } from "../../services/auth.service";
+
 
 const AdminLayout = () => {
+
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    
+    removeSessionStorage();
+
+    navigate("/log-in");
+  };
   return (
     <div className="flex-container">
       <div className="flex-left">
@@ -39,10 +52,10 @@ const AdminLayout = () => {
             Staff
           </Link>
         </div>
-        {/* <div className="nav-item">
-              <MaterialSymbol icon="Settings" size={20} /> 
-              <Link to="/admin/settings" className="link">Settings</Link>
-            </div> */}
+        <div className="logout" onClick={handleLogout}>
+          <span className="material-symbols-outlined">logout</span>
+          <Link to="#" className="log-out">Logout</Link>
+        </div>
       </div>
       <Outlet />
     </div>
