@@ -8,6 +8,7 @@ import OrderView from "../../../components/staff/orders/View";
 import { staffService } from "../../../services/staff";
 //styles
 import "./styles.scss";
+import images from "../../../constants/images";
 
 const StaffMenuPage = () => {
   let [searchParams] = useSearchParams();
@@ -59,7 +60,9 @@ const StaffMenuPage = () => {
   return (
     <div className="staff-layout">
       <div className="staff-header">
-        <div className="head-logo">Logo</div>
+        <div className="head-logo">
+          <img src={images.dineordel} alt="food img" /> 
+        </div>
         <div className="head-menu">Logout</div>
       </div>
       {loader ? (
@@ -67,7 +70,7 @@ const StaffMenuPage = () => {
       ) : (
         <div className="staff-content">
           <div className="table-root-container">
-            <div className="block-header">Select table</div>
+            <div className="block-header"><h5>Select table</h5></div>
             <div className="block-content">
               {tables && tables.length > 0 ? (
                 <TableView tables={tables} />
@@ -79,7 +82,7 @@ const StaffMenuPage = () => {
             </div>
           </div>
           <div className="orders-root-container">
-            <div className="block-header">Select Orders</div>
+            <div className="block-header"><h5>Select Orders</h5></div>
             <div className="block-content">
               {orderLoader ? (
                 <div className="text-center text-secondary">Loading...</div>
@@ -97,7 +100,7 @@ const StaffMenuPage = () => {
             </div>
           </div>
           <div className="order-items-root-container">
-            <div className="block-header">Order Items</div>
+            <div className="block-header"><h5>Order Items</h5></div>
             <div className="block-content">content</div>
           </div>
         </div>

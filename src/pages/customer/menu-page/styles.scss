@@ -1,14 +1,27 @@
 
 .menu-title {
     margin: 4% 5% 0 5%;
-    background-color: azure;
+    background-color: #fbeeff;
+    border-radius: 10px;
 
     h4 {
         font-size: 28px;
         font-weight: 500;
-        padding: 1rem;
+        padding: 12px;
     }
     
+}
+
+.menu-title-one {
+    margin: 4% 5% 0 5%;
+    background-color: #fffaee;
+    border-radius: 10px;
+
+    h4 {
+        font-size: 28px;
+        font-weight: 500;
+        padding: 12px;
+    }
 }
 
 .item-cards {
@@ -26,3 +39,6 @@
 
 }
 
+.footer {
+    background-color: #fafafa;
+}
