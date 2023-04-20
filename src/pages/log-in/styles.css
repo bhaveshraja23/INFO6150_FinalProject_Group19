@@ -48,6 +48,7 @@ overflow: hidden;
 
 .heading {
     padding:10px;
+    margin-left: -10%;
 }
 
 .heading p {
@@ -56,6 +57,9 @@ overflow: hidden;
 
 .form{
     padding:10px; 
+    margin-left: 45%;
+    justify-content: center;
+    /* align-items: center; */
 }
 
 .fields{

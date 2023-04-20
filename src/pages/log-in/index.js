@@ -81,20 +81,20 @@ const LogIn = ({ handleAuth }) => {
             placeholder="enter your password"
           />
         </div>
-        <div className="forgot-password">
+        {/* <div className="forgot-password">
           <a href="">Forgot Password?</a>
-        </div>
+        </div> */}
         <div>
           <button className="btnlogin" type="submit" onClick={submitLogin}>
             Log In
           </button>
         </div>
-        <div className="link">
+        {/* <div className="link">
           <p>
             Don't have an account?
             <Link to="/sign-up">SignUp</Link>
           </p>
-        </div>
+        </div> */}
       </div>
     </div>
   );
