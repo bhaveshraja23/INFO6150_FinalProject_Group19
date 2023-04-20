@@ -6,7 +6,7 @@ import StaffForm from "./StaffForm";
 // api services
 import { staffService } from "../../../services/admin/staff";
 
-const StaffCreateView = ({ staff, setStaff }) => {
+const StaffCreateView = ({ setStaff }) => {
   let defaultData = {
     fullName: "",
     email: "",
@@ -60,7 +60,6 @@ const StaffCreateView = ({ staff, setStaff }) => {
             <StaffForm
               data={formData}
               handleData={handleFormData}
-              //staff={staff}
             />
           </div>
 

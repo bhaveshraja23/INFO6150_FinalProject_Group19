@@ -9,7 +9,7 @@ const StaffFormView = ({ data, handleData }) => {
         <Form.Label>Staff Name</Form.Label>
         <Form.Control
           type="text"
-          placeholder="Name"
+          placeholder="Full Name"
           autoFocus
           value={data.fullName}
           onChange={(e) => handleData("name", e.target.value)}
