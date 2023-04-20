@@ -24,6 +24,17 @@
             height: 110px;
         }
     }
+    .chart-container {
+      display: flex;
+      justify-content: space-between;
+    }
+    
+    .chart-wrapper {
+      width: 3in;
+      height: 3in;
+      box-sizing: border-box;
+    }
+    
 
     @media (min-width: 375px) and (max-width: 820px) {
         .metric-container {
@@ -38,6 +49,7 @@
           height: auto;
         }
       }
+
       
       
 
