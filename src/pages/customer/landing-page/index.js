@@ -17,7 +17,7 @@ const Landing = () => {
       <img src={images.food} alt="food img" />
       <div className='text-container'>
           <h2>We <span> continuously serve</span> your high expectations of delicious taste of food.</h2>
-          <button className='menu-btn'><Link to="/menu" className="menu-btn">View Menu</Link></button>
+          <button className='menu-btn hero-btn'><Link to="/menu" className="menu-btn">View Menu</Link></button>
         </div>
         {/* <div className='section-left'>
           <h3>We <span> continuously serve</span> your high expectations of delicious taste of food.</h3>
@@ -114,7 +114,7 @@ const Landing = () => {
           <p>Items from our popular menu.</p>
           <h1>100+</h1>
           <h3>Items from our popular menu.</h3>
-          <button className='menu-btn'><Link to="/menu" className="menu-btn">View Menu</Link></button>
+          <button className='menu-btn explore-btn'><Link to="/menu" className="menu-btn">View Menu</Link></button>
         </div>
       </div>
 
