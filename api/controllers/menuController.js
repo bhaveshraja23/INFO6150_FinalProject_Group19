@@ -98,13 +98,9 @@ exports.getAllMenuItemsByMenuId = async function (req, res) {
   try {
     const { menu_id } = req.params;
 
-<<<<<<< Updated upstream
     const menuitems = await MenuItem.find({ menuId: menu_id });
 
     console.log("menuitems", menuitems);
-=======
-    const menuitems = await MenuItem.find({menuId: menu_id});
->>>>>>> Stashed changes
 
     if (!menuitems) {
       return res.status(404).json({

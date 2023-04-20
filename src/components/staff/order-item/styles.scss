@@ -1,0 +1,139 @@
+.top-content {
+}
+.middle-content {
+  flex-shrink: 0;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+.bottom-content {
+  flex-shrink: 0;
+}
+
+.top-content,
+.middle-content,
+.bottom-content {
+  width: 100%;
+  padding: 10px;
+  overflow: hidden;
+  .oi-header {
+    font-size: 14px;
+    font-weight: 500;
+    color: #444;
+  }
+  .oi-content {
+    padding: 10px 0px;
+  }
+}
+
+.top-content {
+  height: 100%;
+  .oi-content {
+    height: 100%;
+    overflow-y: auto;
+    .item-container {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      border: 1px solid #eee;
+      padding: 5px 10px;
+      margin-bottom: 5px;
+      .left {
+        width: 100%;
+        color: #555;
+      }
+      .middle {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        user-select: none;
+        .remove {
+          border: 1px solid #666;
+          border-radius: 2px;
+          width: 26px;
+          height: 26px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          &:hover {
+            background-color: #f5f5f5;
+          }
+        }
+        .count {
+          width: 30px;
+          text-align: center;
+        }
+        .add {
+          border: 1px solid #666;
+          border-radius: 2px;
+          width: 26px;
+          height: 26px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          &:hover {
+            background-color: #f5f5f5;
+          }
+        }
+      }
+      .right {
+        flex-shrink: 0;
+        font-size: 16px;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        width: 80px;
+      }
+    }
+  }
+}
+
+.middle-content {
+  .oi-content {
+    .item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 5px;
+      .left {
+        font-size: 14px;
+      }
+      .right {
+        font-size: 16px;
+        font-weight: 600;
+        padding-right: 10px;
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+}
+.bottom-content {
+  .oi-content {
+    .item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 5px;
+
+      .left {
+        font-size: 14px;
+      }
+      .right {
+        font-size: 20px;
+        font-weight: 600;
+        padding-right: 10px;
+        display: flex;
+        align-items: center;
+      }
+    }
+    .pay-button {
+      padding: 20px 0px 10px 0px;
+    }
+  }
+}

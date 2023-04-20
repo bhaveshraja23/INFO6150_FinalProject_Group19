@@ -6,6 +6,14 @@ const OrderSchema = new mongoose.Schema({
     required: true,
     enum: ["BOOKED", "INITIATED", "INPROGRESS", "CANCELLED", "SUCCESS"],
   },
+  reserved_at: {
+    type: String,
+    required: true,
+  },
+  reserved_time: {
+    type: String,
+    required: true,
+  },
   payment: {
     type: String,
     required: true,
@@ -38,12 +46,14 @@ const OrderSchema = new mongoose.Schema({
   staffId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
-    required: true,
+    default: null,
+    required: false,
   },
   tableId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "RestaurantTable",
-    required: true,
+    default: null,
+    required: false,
   },
 });
 

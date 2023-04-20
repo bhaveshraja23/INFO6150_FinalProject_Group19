@@ -10,6 +10,8 @@ import {
   STAFF_ORDER_ITEMS_WITH_ID_ENDPOINT,
   STAFF_FEEDBACK_WITH_ORDER_ID_ENDPOINT,
   STAFF_FEEDBACK_ENDPOINT,
+  BOOK_A_TABLE_ENDPOINT,
+  ASSIGN_ORDER_TO_TABLE_AND_STAFF_ENDPOINT,
 } from "../../constants/api-routes";
 
 export const staffService = {
@@ -24,7 +26,7 @@ export const staffService = {
   updateTable: async (data) => {
     try {
       const response = await axios.put(
-        STAFF_TABLE_WITH_TABLE_ID_ENDPOINT(data.id),
+        STAFF_TABLE_WITH_TABLE_ID_ENDPOINT,
         data
       );
       return response.data;
@@ -47,6 +49,26 @@ export const staffService = {
   menuWithMenuItems: async () => {
     try {
       const response = await axios.get(STAFF_MENU_WITH_MENU_ITEMS_ENDPOINT);
+      return response.data;
+    } catch (error) {
+      throw error.response.data;
+    }
+  },
+
+  createOrder: async (data) => {
+    try {
+      const response = await axios.post(BOOK_A_TABLE_ENDPOINT, data);
+      return response.data;
+    } catch (error) {
+      throw error.response.data;
+    }
+  },
+  assignOrder: async (data) => {
+    try {
+      const response = await axios.post(
+        ASSIGN_ORDER_TO_TABLE_AND_STAFF_ENDPOINT,
+        data
+      );
       return response.data;
     } catch (error) {
       throw error.response.data;
@@ -82,10 +104,10 @@ export const staffService = {
       throw error.response.data;
     }
   },
-  deleteOrderItem: async (data) => {
+  deleteOrderItem: async (id) => {
     try {
       const response = await axios.delete(
-        STAFF_ORDER_ITEMS_WITH_ID_ENDPOINT(data.id)
+        STAFF_ORDER_ITEMS_WITH_ID_ENDPOINT(id)
       );
       return response.data;
     } catch (error) {

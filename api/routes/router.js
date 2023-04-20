@@ -9,6 +9,8 @@ const controllerMenuItems = require("../controllers/menuController");
 const controllerOrders = require("../controllers/orderController");
 const controllerTables = require("../controllers/tableController");
 const controllerFeedback = require("../controllers/feedbackController");
+// v2
+const controllerStaff = require("../controllers/staffController");
 
 module.exports = function (app) {
   // <------------------------AUTH------------------------------->
@@ -117,6 +119,31 @@ module.exports = function (app) {
     "/api/admin/menu-with-items",
     controllerMenuItems.getAllMenuWithMenuItems
   );
+
+  // staff updated routes starts
+  router.post(
+    "/api/staff/v2/book-a-table",
+    controllerStaff.staffBookATableController
+  );
+
+  router.get(
+    "/api/staff/v2/order-by-table-id/:table_id",
+    controllerStaff.getAllOrderUnderTable
+  );
+
+  router.post(
+    "/api/staff/v2/assign-staff-table-to-order",
+    controllerStaff.staffAssignATableToOrder
+  );
+
+  router.put("/api/staff/v2/table-update/", controllerStaff.staffUpdateTable);
+
+  router.delete(
+    "/api/staff/v2/delete-order/:order_id",
+    controllerStaff.staffDeleteOrder
+  );
+
+  // staff updated routes ends
 
   app.use("/", router);
 };

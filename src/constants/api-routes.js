@@ -36,11 +36,10 @@ export const ADMIN_TABLES_WITH_ID_ENDPOINT = (table_id) =>
 
 // staff endpoints starts
 export const STAFF_TABLES_ENDPOINT = `/api/admin/table`; // getting all the tables
-export const STAFF_TABLE_WITH_TABLE_ID_ENDPOINT = (table_id) =>
-  `/api/admin/table/${table_id}`; // updating the table status
+export const STAFF_TABLE_WITH_TABLE_ID_ENDPOINT = `/api/staff/v2/table-update`; // updating the table status
 
 export const STAFF_ORDERS_WITH_TABLE_ID_ENDPOINT = (table_id) =>
-  `/api/admin/table/${table_id}/orders`; // getting all the orders under the table which status is BOOKED and INITIATED and INPROGRESS
+  `/api/staff/v2/order-by-table-id/${table_id}`; // getting all the orders under the table which status is BOOKED and INITIATED and INPROGRESS
 
 export const STAFF_MENU_WITH_MENU_ITEMS_ENDPOINT = `/api/admin/menu-with-items`; // getting all the menu with menu items
 
@@ -55,6 +54,7 @@ export const STAFF_FEEDBACK_WITH_ORDER_ID_ENDPOINT = (order_id) =>
 export const STAFF_FEEDBACK_ENDPOINT = `/api/staff/feedback`; // creating the feedback
 // staff endpoints ends
 
-// Booking an order starts
-export const BOOK_A_TABLE_ENDPOINT = ``; // create a user as customer and create a order with his id and keep the order status as booked
+// Booking an order starts user for both staff and user
+export const BOOK_A_TABLE_ENDPOINT = `/api/staff/v2/book-a-table`; // create a user as customer and create a order with his id and keep the order status as booked
+export const ASSIGN_ORDER_TO_TABLE_AND_STAFF_ENDPOINT = `/api/staff/v2/assign-staff-table-to-order`; // create a user as customer and create a order with his id and keep the order status as booked
 // Booking an order ends

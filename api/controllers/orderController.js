@@ -66,7 +66,7 @@ exports.createOrderItem = async function (req, res) {
     if (!itemid || !order) {
       return res.status(404).json({ message: "Not found" });
     }
-    const orderitems = new OrderItem({
+    let orderitems = new OrderItem({
       created_at: Date.now(),
       updated_at: Date.now(),
       quantity: quantity,
@@ -77,7 +77,13 @@ exports.createOrderItem = async function (req, res) {
 
     await orderitems.save();
 
-    res.status(201).json({ message: "OrderItems saved", data: orderitems });
+    let orderUpdatedItem = await OrderItem.findById(orderitems._id)
+      .populate("itemId")
+      .exec();
+
+    res
+      .status(201)
+      .json({ message: "OrderItems saved", data: orderUpdatedItem });
   } catch (error) {
     res.status(500).json({ message: "Error" });
   }
@@ -85,7 +91,7 @@ exports.createOrderItem = async function (req, res) {
 
 exports.getAllOrders = async function (req, res) {
   try {
-    const orders = await Order.find().populate('customerId');
+    const orders = await Order.find().populate("customerId");
     res.status(200).json({
       status: 200,
       message: "Orders have been fetched successfully",
@@ -96,12 +102,13 @@ exports.getAllOrders = async function (req, res) {
   }
 };
 
-
 exports.getAllOrderItemsByOrderId = async function (req, res) {
   try {
     const { order_id } = req.params;
 
-    const orderitems = await OrderItem.find({ orderId: order_id });
+    const orderitems = await OrderItem.find({ orderId: order_id })
+      .populate("itemId")
+      .exec();
 
     if (!orderitems) {
       return res.status(404).json({
@@ -234,12 +241,12 @@ exports.deleteOrderItem = async function (req, res) {
   }
 };
 
-exports.getOrdersByTableId = async(req, res) => {
-  try{
-    const {table_id} = req.params;
-    const orders = await Order.find({tableId: table_id});
+exports.getOrdersByTableId = async (req, res) => {
+  try {
+    const { table_id } = req.params;
+    const orders = await Order.find({ tableId: table_id });
     res.status(200).json(orders);
-  } catch(err){
+  } catch (err) {
     console.log(err.message);
   }
-}
+};

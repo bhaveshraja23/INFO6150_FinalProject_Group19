@@ -21,7 +21,7 @@ import MenuItemPage from "./pages/admin/menu-item";
 import TablesPage from "./pages/admin/tables";
 import StaffPage from "./pages/admin/staff";
 // staff
-import StaffTablesPage from "./pages/staff/staff-menu";
+import StaffTablesPage from "./pages/staff/staff-root";
 import StaffMenuPage from "./pages/staff/staff-tables";
 //import CustomerFeedbackPage from "./pages/staff/staff-feedback";
 // session storage
