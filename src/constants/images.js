@@ -8,6 +8,7 @@ import food from '../assets/food.jpg';
 import spices from '../assets/spices.png';
 import white from '../assets/white.svg';
 import table from '../assets/table.png';
+import aboutus from '../assets/aboutus.png';
 
 export default {
     loginimg,
@@ -19,5 +20,6 @@ export default {
     food,
     spices,
     white,
-    table
+    table,
+    aboutus
 }
