@@ -7,9 +7,40 @@ import Card from 'react-bootstrap/Card';
 import CarouselTestimonials from '../../../components/carousel/carousel';
 import Footer from '../../../components/footer/footer';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { useState } from 'react';
 
 
 const Landing = () => {
+
+  const dateFormat = (date) => {
+    date = new Date(date);
+    return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+  };
+
+  const [formdata, setFormdata]  = useState({
+    user_name: "",
+    reserved_at: new Date().toISOString().substring(0, 10), // set initial value to today's date
+    reserved_time: new Date().toISOString().substring(11, 16), // set initial value to current time (hours:minutes)
+    people_count: 0,
+    order_status: "BOOKED",
+    order_type: "DINEIN",
+  });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try{
+      const res = await axios.post("/api/staff/v2/book-a-table", formdata);
+      console.log(res.data);
+    } catch(err){
+      console.log(err);
+    }
+  }
+
+  const handleChange = (e) => {
+    setFormdata({ ...formdata, [e.target.name]: e.target.value });
+  }
+
   return (
     <div>
       < NavBar />
@@ -128,57 +159,72 @@ const Landing = () => {
       </div>
 
       <div className='reserve-table'>
-        <div className='reserve-form'>
-        <div className="heading">
-          <h3>
-            <b>Reserve your table</b>
-          </h3>
-          <p>Book your table for hassle-free dining</p>
+  <div className='reserve-form'>
+    <div className="heading">
+      <h3>
+        <b>Reserve your table</b>
+      </h3>
+      <p>Book your table for hassle-free dining</p>
+    </div>
+    <form onSubmit={handleSubmit}>
+      <div className='form'>
+        <div className="form-item">
+          <label className="form-label">Name</label>
+          <input
+            className="login-input"
+            type="text"
+            placeholder="Your name"
+            name="user_name"
+            value={formdata.user_name}
+            onChange={handleChange}
+          />
         </div>
-          <div className='form'>
-            <div className="form-item">
-              <label className="form-label">Name</label>
-              <input
-                className="login-input"
-                type="text"
-                placeholder="Your name"
-              />
-            </div>
-            <div className="form-item">
-              <label className="form-label">Date</label>
-              <input
-                className="login-input"
-                type="text"
-                placeholder="Select Date"
-              />
-            </div>
-            <div className="form-item">
-              <label className="form-label">Time</label>
-              <input
-                className="login-input"
-                type="text"
-                placeholder="Select Time"
-              />
-            </div>
-            <div className="form-item">
-              <label className="form-label">No.of People</label>
-              <input
-                className="login-input"
-                type="text"
-                placeholder="pax"
-              />
-            </div>
-            <div>
-            <button className="btnlogin" type="submit">
+        <div className="form-item">
+          <label className="form-label">Date</label>
+          <input
+            className="login-input"
+            type="date"
+            placeholder="Select Date"
+            name="reserved_at"
+            value={formdata.reserved_at}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form-item">
+          <label className="form-label">Time</label>
+          <input
+            className="login-input"
+            type="time"
+            placeholder="Select Time"
+            name="reserved_time"
+            value={formdata.reserved_time}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form-item">
+          <label className="form-label">No.of People</label>
+          <input
+            className="login-input"
+            type="number"
+            placeholder="pax"
+            name="people_count"
+            value={formdata.people_count}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <button className="btnlogin" type="submit">
             Reserve Now
-            </button>
-        </div>
-          </div>
-        </div>
-        <div className='table-img'>
-          <img src={images.table} alt="food img" />
+          </button>
         </div>
       </div>
+    </form>
+  </div>
+  <div className='table-img'>
+    <img src={images.table} alt="food img" />
+  </div>
+</div>
+
 
       <div className='footer'>
         <Footer />
