@@ -19,7 +19,7 @@ export const ADMIN_MENU_CREATE_WITH_ID_ENDPOINT = (menu_id) =>
 
 export const ADMIN_MENU_ITEM_CREATE_ENDPOINT = `/api/admin/menu-item`;
 export const ADMIN_MENU_ITEM_CREATE_WITH_ID_ENDPOINT = (menu_item_id) =>
-  `/api/admin/menu-item${menu_item_id}`;
+  `/api/admin/menu-item/${menu_item_id}`;
 
 // staff
 export const ADMIN_STAFF_ENDPOINT = `/api/admin/user`;
