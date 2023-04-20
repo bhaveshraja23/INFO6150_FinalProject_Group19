@@ -37,14 +37,14 @@ The Admin role is responsible for managing the entire system, including staff, m
     * Organize menu items into categories, such as appetizers, main courses, and desserts.<br>
 * <b>Order Management:</b><br> 
     * Perform CRUD operations on tables.<br>
-    * Monitor the table avaialabilty status.<br>
+    * Monitor the table availability status.<br>
 * <b>Reporting & Analytics:</b><br>
     * Access sales reports, revenue analysis, number of customers per day.<br>
     * View customer feedback and ratings.<br>
 
 ### Staff
 
-The Staff role primarily involves managing orders and interacting with customers. Their workflow might include:
+The Staff role primarily involves managing orders and interacting with customers. The below is the list of workflow which can be performed.
 
 * <b>Order Management:</b><br>
     * Receive a new customer order from the assigned table.
