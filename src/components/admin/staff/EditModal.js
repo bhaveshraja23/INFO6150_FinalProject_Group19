@@ -9,11 +9,9 @@ import { staffService } from "../../../services/admin/staff";
 const StaffEditView = ({ data, setStaff }) => {
   let defaultData = {
     name: "",
-    //email: "",
-    //password: "",
-    //role: "STAFF",
-    //status: "EMPTY",
-    //defaultStaffId: null,
+    email: "",
+    password: "",
+    role: "STAFF",
   };
 
   const [formLoader, setFormLoader] = React.useState(false);
@@ -31,7 +29,6 @@ const StaffEditView = ({ data, setStaff }) => {
       email: data.email,
       password: data.password,
       role: data.role,
-      
     });
   };
   const handleModalClose = () => {
@@ -46,7 +43,13 @@ const StaffEditView = ({ data, setStaff }) => {
       .then((response) => {
         setStaff((prevData) => {
           return prevData.map((_staff) =>
-            _staff._id === response.data._id ? response.data : _staff
+            _staff._id === formData.id
+              ? {
+                  ..._staff,
+                  fullName: formData.fullName,
+                  role: formData.role,
+                }
+              : _staff
           );
         });
         handleModalClose();

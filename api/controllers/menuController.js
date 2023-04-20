@@ -35,10 +35,10 @@ exports.getAllMenu = async function (req, res) {
     });
 };
 
-exports.getAllMenuWithMenuItems = async function(req, res) {
+exports.getAllMenuWithMenuItems = async function (req, res) {
   try {
     const menus = await Menu.find().exec();
-    const menuItems = await MenuItem.find().populate('menuId').exec();
+    const menuItems = await MenuItem.find().populate("menuId").exec();
     const menuMap = {};
     menus.forEach((menu) => {
       menuMap[menu._id] = {
@@ -50,7 +50,7 @@ exports.getAllMenuWithMenuItems = async function(req, res) {
     menuItems.forEach((menuItem) => {
       const menuId = menuItem.menuId._id;
       menuMap[menuId].items.push({
-        menuItem
+        menuItem,
       });
     });
     const result = Object.values(menuMap).map((menu) => ({
@@ -98,7 +98,9 @@ exports.getAllMenuItemsByMenuId = async function (req, res) {
   try {
     const { menu_id } = req.params;
 
-    const menuitems = await MenuItem.findById(menu_id);
+    const menuitems = await MenuItem.find({ menuId: menu_id });
+
+    console.log("menuitems", menuitems);
 
     if (!menuitems) {
       return res.status(404).json({

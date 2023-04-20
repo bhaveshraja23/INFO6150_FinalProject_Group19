@@ -16,7 +16,8 @@ export const ADMIN_MENU_CREATE_WITH_ID_ENDPOINT = (menu_id) =>
   `/api/admin/menu/${menu_id}`;
 
 // menu items
-
+export const ADMIN_MENU_ITEM_WITH_MENU_ID_ENDPOINT = (menu_id) =>
+  `/api/admin/menu/${menu_id}/menu-item`;
 export const ADMIN_MENU_ITEM_CREATE_ENDPOINT = `/api/admin/menu-item`;
 export const ADMIN_MENU_ITEM_CREATE_WITH_ID_ENDPOINT = (menu_item_id) =>
   `/api/admin/menu-item/${menu_item_id}`;

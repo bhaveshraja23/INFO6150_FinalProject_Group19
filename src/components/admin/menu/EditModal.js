@@ -6,8 +6,9 @@ import MenuForm from "./MenuForm";
 // api services
 import { menuService } from "../../../services/admin/menu";
 
-const MenuEditView = ({data, setMenu }) => {
+const MenuEditView = ({ data, setMenu }) => {
   let defaultData = {
+    id: "",
     name: "",
     description: "",
   };
@@ -17,24 +18,21 @@ const MenuEditView = ({data, setMenu }) => {
   const handleFormData = (key, value) => {
     setFormData((prevData) => ({ ...prevData, [key]: value }));
   };
-  
 
   const [modal, setModal] = React.useState(false);
   const handleModalOpen = () => {
     setModal(true);
     setFormData({
-      menu_id: data._id,
+      id: data._id,
       name: data.name,
-      description: data.description
-    }); 
-
+      description: data.description,
+    });
   };
 
   const handleModalClose = () => {
     setModal(false);
     setFormData(defaultData);
-  }; 
-
+  };
 
   const handleFormSubmit = async () => {
     setFormLoader(true);
@@ -43,10 +41,15 @@ const MenuEditView = ({data, setMenu }) => {
       .then((response) => {
         setMenu((prevData) => {
           return prevData.map((_menu) =>
-            _menu._id === response.data._id ? response.data : _menu
+            _menu._id === formData.id
+              ? {
+                  ..._menu,
+                  name: formData.name,
+                  description: formData.description,
+                }
+              : _menu
           );
         });
-        console.log(response.data);
         handleModalClose();
       })
       .catch((error) => {
@@ -54,7 +57,6 @@ const MenuEditView = ({data, setMenu }) => {
       });
     setFormLoader(false);
   };
-
 
   return (
     <div>
@@ -69,10 +71,7 @@ const MenuEditView = ({data, setMenu }) => {
 
           {/* content */}
           <div className="custom-modal-body">
-            <MenuForm
-              data={formData}
-              handleData={handleFormData}
-            />
+            <MenuForm data={formData} handleData={handleFormData} />
           </div>
 
           {/* footer */}

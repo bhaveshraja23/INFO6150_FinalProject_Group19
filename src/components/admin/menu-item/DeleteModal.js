@@ -1,12 +1,10 @@
 import React from "react";
 // bootstrap
 import { Button, Modal } from "react-bootstrap";
-// components
-import MenuForm from "./MenuForm";
 // api services
-import { menuService } from "../../../services/admin/menu";
+import { menuItemService } from "../../../services/admin/menuItem";
 
-const MenuDeleteView = ({ data, setMenu }) => {
+const MenuDeleteView = ({ data, setMenuItems }) => {
   const [formLoader, setFormLoader] = React.useState(false);
 
   const [modal, setModal] = React.useState(false);
@@ -19,10 +17,10 @@ const MenuDeleteView = ({ data, setMenu }) => {
 
   const handleFormSubmit = async () => {
     setFormLoader(true);
-    await menuService
+    await menuItemService
       .delete(data?._id)
       .then((response) => {
-        setMenu((prevData) => {
+        setMenuItems((prevData) => {
           return prevData.filter((_menu) => _menu._id !== data?._id);
         });
         handleModalClose();
@@ -42,11 +40,11 @@ const MenuDeleteView = ({ data, setMenu }) => {
       <Modal show={modal} onHide={handleModalClose} className="custom-modal">
         <Modal.Body>
           {/* header */}
-          <div className="custom-modal-header">Delete Name</div>
+          <div className="custom-modal-header">Delete Menu Item</div>
 
           {/* content */}
           <div className="custom-modal-body">
-            Are you sure you want to delete this Name?
+            Are you sure you want to delete this Menu Item?
           </div>
 
           {/* footer */}

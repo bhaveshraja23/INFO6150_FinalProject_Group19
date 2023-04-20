@@ -1,15 +1,11 @@
 import React from "react";
-
+// components
 import StaffView from "../../../components/admin/staff/View";
 import StaffCreate from "../../../components/admin/staff/CreateModal";
-
 // api services
-import { tableService } from "../../../services/admin/tables";
 import { staffService } from "../../../services/admin/staff";
 //styles
 import "./styles.scss";
-import "bootstrap/dist/css/bootstrap.min.css";
-import AddStaff from "../../../components/popup-models/AddStaff";
 
 const Staff = () => {
   const [loader, setLoader] = React.useState(null);
