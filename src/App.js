@@ -17,6 +17,7 @@ import LoginPage from "./pages/log-in";
 // admin
 import DashboardPage from "./pages/admin/dashboard";
 import MenuPage from "./pages/admin/menu";
+import MenuItemPage from "./pages/admin/menu-item";
 import TablesPage from "./pages/admin/tables";
 import StaffPage from "./pages/admin/staff";
 // staff
@@ -79,6 +80,7 @@ function App() {
           <Route path="/admin" element={<AdminLayout />}>
             <Route index element={<DashboardPage />} />
             <Route path="menu" element={<MenuPage />} />
+            <Route path="menu/items" element={<MenuItemPage/>} />
             <Route path="tables" element={<TablesPage />} />
             <Route path="staff" element={<StaffPage />} />
           </Route>
