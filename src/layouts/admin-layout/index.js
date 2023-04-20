@@ -7,7 +7,7 @@ import images from "../../constants/images";
 import { Link } from "react-router-dom";
 import {removeSessionStorage} from "../../session/session-storage";
 import { useNavigate } from "react-router-dom";
-import { authService } from "../../services/auth.service";
+//import { authService } from "../../services/auth.service";
 
 
 const AdminLayout = () => {
